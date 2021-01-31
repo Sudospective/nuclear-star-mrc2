@@ -14,7 +14,7 @@
 		songDir = GAMESTATE:GetCurrentSong():GetSongDir()
 	end
 
-	local sanity = loadfile(songDir..'lua/scripts/sanity.lua')()
+	local sanity = loadfile(songDir..'lua/scripts/sanity.lua')
 	if sanity == nil then
 		SCREENMAN:SystemMessage('Unable to locate song directory (mods.xml:12)')
 		return
@@ -22,7 +22,7 @@
 	-- Requires column specific confusionoffsets to be replaced with 'targetrotationA#'
 	-- where A is axis and # is column (1 - 4).
 	-- Check portable.lua for full list of changes.
-	if sanity then
+	if sanity ~= nil then
 		xero(loadfile(songDir..'lua/scripts/portable.lua'))()
 	end
 
@@ -36,7 +36,7 @@
 	end
 	-- hope this helps ilu <333 --
 	
-	if sanity then
+	if sanity ~= nil then
 		cool = xero(loadfile(songDir..'lua/cool.lua'))
 		sudo = xero(loadfile(songDir..'lua/sudo.lua'))
 		cool()
