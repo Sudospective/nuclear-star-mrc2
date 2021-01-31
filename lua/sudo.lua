@@ -1,13 +1,52 @@
+-- intro funnies
+set {0, 100, 'stealth', 100, 'dark'}
+ease
+{0, 16, linear, 0, 'dark'}
+{12, 4, linear, 0, 'stealth'}
+
+func {0, function()
+    AFTSprite:diffusealpha(0.9 * aftMult)
+end, persist = false}
+func {12, function()
+    AFTSprite:accelerate(4 * spb)
+    AFTSprite:zoom(1.1)
+end, persist = false}
+func {16, function()
+    AFTSprite:zoom(1.2)
+    AFTSprite:decelerate(2 * spb)
+    AFTSprite:zoom(1.005)
+    AFTSprite:diffusealpha(0.85 * aftMult)
+end, persist = false}
+
+func {108, function()
+    AFTSprite:accelerate(4 * spb)
+    AFTSprite:diffusealpha(0 * aftMult)
+end}
+
 -- squinshies
 func {136, function()
     for pn = 1, 2 do
         P[pn]:x(scx)
     end
 end}
+set
+{136, 0, 'xmod'}
+{136, 100, 'stealth2', 100, 'stealth3', plr = 1}
+{136, 100, 'stealth0', 100, 'stealth1', plr = 2}
 ease
+{136, 1.5, outExpo, 100, 'dark'}
+{136, 4, outExpo, 0, 'drunk', 0, 'tipsy'}
+{136, 4, outExpo, 0.15, 'xmod', 0, 'rotationx', -314.15 / 4, 'confusionxoffset', -10000, 'tinyz'}
+{136, 6, inOutQuad, 0.5, 'xmod', 0, 'rotationx', 0, 'confusionxoffset', 0, 'tinyz'}
+{142, 2, spike, 50, 'stealth'}
+{142.5, 1, inOutExpo, 0, 'stealth2', 0, 'stealth3', plr = 1}
+{142.5, 1, inOutExpo, 0, 'stealth0', 0, 'stealth1', plr = 2}
+{142, 2, inExpo, 1.5, 'xmod', 100, 'wave', 15, 'tornado', -150, 'holdgirth', 200, 'bumpyperiod', 100, 'bumpyxperiod', 100, 'bumpyxoffset', 50, 'drunk', 50, 'tipsy'}
 {143, 1, inOutExpo, 100, 'dark', 50, 'beat'}
-{142, 2, inExpo, 100, 'wave', 15, 'tornado', -150, 'holdgirth', 200, 'bumpyperiod', 100, 'bumpyxperiod', 100, 'bumpyxoffset', 50, 'drunk', 50, 'tipsy'}
-mirror {142, 2, inExpo, 50, 'bumpy', 50, 'bumpyx'}
+mirror
+{136, 6, outBack, 10, 'rotationy', -314.15 / 18, 'confusionyoffset'}
+{140, 4, inExpo, 0, 'rotationy', 0, 'confusionyoffset'}
+{142, 2, inExpo, 50, 'bumpy', 50, 'bumpyx'}
 for beat = 144, 190, 2 do
     mirror
     {beat, 1, pop, 50, 'noteskewx', -50, 'noteskewy'}
