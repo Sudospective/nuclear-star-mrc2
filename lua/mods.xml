@@ -5,9 +5,6 @@
 	-- Mods are aliased and auxed for SM in portable.lua. --
 	-- FarDistZ is also set and the aux nodes are scaled. --
 	--------------------------------------------------------
-	sm_fix = (FUCK_EXE and 0) or 1
-	local bw, bh = 640, 480
-	sm_scale = sh / bh
 	if FUCK_EXE then
 		songDir = '.'..GAMESTATE:GetCurrentSong():GetSongDir() -- Change this if you're having issues
 	else
@@ -19,9 +16,7 @@
 		SCREENMAN:SystemMessage('Unable to locate song directory (mods.xml:12)')
 		return
 	end
-	-- Requires column specific confusionoffsets to be replaced with 'targetrotationA#'
-	-- where A is axis and # is column (1 - 4).
-	-- Check portable.lua for full list of changes.
+	-- Requires manual coding behavior changes, check portable.lua for instructions.
 	if sanity ~= nil then
 		xero(loadfile(songDir..'lua/scripts/portable.lua'))()
 	end
