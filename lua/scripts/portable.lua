@@ -18,11 +18,11 @@ sm_fix = (FUCK_EXE and 0) or 1
 	// USE THESE COMPATIBLITY MODS INSTEAD OF THE NITG EQUIVALENT //
 	////////////////////////////////////////////////////////////////
 
-	- confusion_offset#: targetrotation_# (# starts at 1 instead of 0)
-	- SetHiddenRegion on P[pn]: 'hiddenregion' in set (mod number is length of region)
+	- SetHiddenRegion on P[pn]: 'hideregion' in set (recommended using oatmealine's "hiddenregion" plugin instead)
 	- Anything using screen variables (sw, sh) should use the defined base variables (bw, bh)
 
 	Everything else should work the same.
+	If you put in a little bit of effort, you save Kid a lot of work.
 
 	TODO:
 	- Column-specific noteskew conversion
