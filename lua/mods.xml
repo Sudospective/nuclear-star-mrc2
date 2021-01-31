@@ -13,7 +13,7 @@
 
 	local sanity = loadfile(songDir..'lua/scripts/sanity.lua')
 	if sanity == nil then
-		SCREENMAN:SystemMessage('Unable to locate song directory (mods.xml:12)')
+		SCREENMAN:SystemMessage('Unable to locate song directory (mods.xml:9)')
 		return
 	end
 	-- Requires manual coding behavior changes, check portable.lua for instructions.
