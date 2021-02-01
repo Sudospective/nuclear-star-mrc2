@@ -240,13 +240,19 @@ for beat = 214, 216, 0.5 do
 end
 set{216,0,'centered2',0,'movey',0,'drunk'}
 
+ease{225.75,0.25,outCubic,25,'flip'}
+ease{226,0.25,outQuad,-100,'flip',400,'drunk',100,'tipsy'}
+ease{226.25,0.75,inCubic,0,'flip',0,'drunk',0,'tipsy'}
+mirror{226,0.25,outQuad,-500,'movez'}
+mirror{226.25,0.75,inQuad,0,'movez'}
+
 
 
 --second half--
 
 
 ease{364,4,outSine,2.5,'xmod',50,'flip'}
-ease{368,16,inSine,400,'amt',2.25,'xmod'}
+ease{368,16,inSine,400,'amt',1.75,'xmod'}
 ease{368,24,inCubic,55,'offset'}
 ease{392,8,outCubic,45,'offset'}
 local offset_speen = 45
