@@ -185,3 +185,10 @@ add
     {264, 4, inQuad, 0, 'zoomy'}
 set {268, 100, 'zoomy', 0, 'wave', 0, 'rotationz', 0, 'rotationy', 0, 'tinyy', 0, 'tinyz', 0, 'reverse', 2000, 'z'}
 ease {268, 4, outExpo, 0, 'tiny', 0, 'z', 0, 'flip'}
+
+ease {392, 4, outExpo, 200, 'drawsize'}
+for beat = 432, 446, 2 do
+    ease
+        {beat, 1, outExpo, 175, 'invert', -175, 'flip'}
+        {beat + 1, 1, outExpo, 0, 'invert', 50, 'flip'}
+end
