@@ -75,6 +75,33 @@ node {'ypos', function(y, pn)
     P[pn]:y(y)
 end}
 
+definemod{'offset','amt','eccentricityx','eccentricityz',function(offset,amt,ex,ez,plr)
+    local pi=math.pi/4
+    local movex0, movex1, movex2, movex3 =
+        math.cos(pi*(offset+0+(plr+1)*4))*(amt*ex/100),
+        math.cos(pi*(offset+1+(plr+1)*4))*(amt*ex/100),
+        math.cos(pi*(offset+2+(plr+1)*4))*(amt*ex/100),
+        math.cos(pi*(offset+3+(plr+1)*4))*(amt*ex/100)
+
+    local movez0, movez1, movez2, movez3 =
+        math.sin(pi*(offset+0+(plr+1)*4))*(amt*ez/100),
+        math.sin(pi*(offset+1+(plr+1)*4))*(amt*ez/100),
+        math.sin(pi*(offset+2+(plr+1)*4))*(amt*ez/100),
+        math.sin(pi*(offset+3+(plr+1)*4))*(amt*ez/100)
+
+    return movex0, movex1, movex2, movex3, movez0, movez1, movez2, movez3
+end,
+'movex0','movex1','movex2','movex3',
+'movez0','movez1','movez2','movez3',
+}
+--TO USE: 
+--flip should be at 50%, and both players should be centered
+--amt is the size of the circle
+--offset is the rotation offset, in pi radians / 4 (4 offset should be 1 rotation)
+--eccentricity is how much of an oval it is, 100 is circular, anything else is an oval
+setdefault{90,'eccentricityx',320,'eccentricityz'} 
+
+
     
 set {0, scx, 'xpos',1000,'tipsy',3000,'drunk',720,'rotationz',-1256,'confusionoffset', plr = 1}
 set {0, scx, 'xpos',-1000,'tipsy',-3000,'drunk',-720,'rotationz',1256,'confusionoffset', plr = 2}
@@ -184,4 +211,18 @@ end
 for i,v in ipairs(arrowpath) do
     ease{v[1],0.25,outSine,100,'arrowpath'..v[2]}
     ease{v[1]+0.25,1,inOutSine,0,'arrowpath'..v[2]}
+end
+
+
+--second half--
+
+
+ease{364,4,outSine,2.5,'xmod',50,'flip'}
+ease{368,16,inSine,400,'amt',2.25,'xmod'}
+ease{368,24,inCubic,55,'offset'}
+ease{392,8,outCubic,45,'offset'}
+local offset_speen = 45
+for i = 400,447 do
+    ease{i,1,outBack,offset_speen+1,'offset'}
+    offset_speen = offset_speen + 1
 end
