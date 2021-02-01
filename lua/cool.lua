@@ -206,12 +206,23 @@ for i,v in ipairs(plonky_synth) do
     ease{v[1],0.25,outSine,-100,'tiny'..v[2], rand.float(-75,75),'confusionoffset'..v[2]}
     ease{v[1]+0.25,2.5,inOutSine,0,'tiny'..v[2],0,'confusionoffset'..v[2]}
 end
+local arrowpathb = 20
 for i,v in ipairs(arrowpath) do
-    ease{v[1],0.25,outSine,100,'arrowpath'..v[2]}
+    ease{v[1],0.25,outSine,arrowpathb,'arrowpath'..v[2]}
     ease{v[1]+0.25,1,inOutSine,0,'arrowpath'..v[2]}
+    arrowpathb = arrowpathb + 5
 end
+local kickykicks = 20
+for i = 60,76 do
+    ease{i,0.25,outSine,kickykicks,'beat',}
+   -- ease{i+0.25,2,inOutSine,0,'mini'}
+    kickykicks = kickykicks + 20
+end
+ease{76,4,inSine,0,'beat'}
+mirror{76,4,inSine,60,'tipsy',50,'drunk'}
 
-
+ease{112,24,inQuad,360*8,'rotationy',-628*8,'confusionyoffset'}
+set{136,0,'rotationy',0,'confusionyoffset'}
 --second half--
 
 
