@@ -62,6 +62,7 @@
 
 	-- Default Mods
     AFTSprite:diffusealpha(0 * aftMult)
+	AFTSprite:zoom(1)
 	setdefault {1.5, 'xmod', 0, 'straightholds'}
 	func {0, 999, function()
     	deltaTime = deltaTime + GAMESTATE:GetSongTime() - lastFrameTime
