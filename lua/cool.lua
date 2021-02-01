@@ -223,6 +223,25 @@ mirror{76,4,inSine,60,'tipsy',50,'drunk'}
 
 ease{112,24,inQuad,360*8,'rotationy',-628*8,'confusionyoffset'}
 set{136,0,'rotationy',0,'confusionyoffset'}
+
+--BRING IT BACK--
+set{209,-40,'tornadoperiod'}
+ease{209.75,0.25,outCubic,25,'flip'}
+ease{210,0.25,outQuad,-100,'flip',400,'tornado',100,'tipsy'}
+ease{210.25,0.75,inCubic,0,'flip',0,'tornado',0,'tipsy'}
+mirror{210,0.25,outQuad,-100,'movey'}
+mirror{210.25,0.75,inQuad,0,'movey'}
+
+set {214, 75, 'movey'} -- 150 for 1.5x
+ease {214, 2, linear, 300, 'centered2'} -- Multiple of previous number
+for beat = 214, 216, 0.5 do
+    add {beat, 0, instant, -75, 'movey'} -- Same number as first
+    mirroradd{beat, 0.5, outCubic, -100,'drunk'}
+end
+set{216,0,'centered2',0,'movey',0,'drunk'}
+
+
+
 --second half--
 
 
