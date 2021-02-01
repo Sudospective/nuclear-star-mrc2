@@ -19,8 +19,9 @@ func {16, function()
     AFTSprite:diffusealpha(0.85 * aftMult)
 end, persist = false}
 
-func {108, function()
-    AFTSprite:accelerate(4 * spb)
+func {136, function()
+    AFTSprite:diffusealpha(0.98 * aftMult)
+    AFTSprite:accelerate(8 * spb)
     AFTSprite:diffusealpha(0 * aftMult)
 end, persist = false}
 
@@ -117,7 +118,7 @@ swap
     {197, 0.5, outExpo, 'ldur'}
     {198, 0.5, outExpo, 'urld'}
     {199, 0.5, outExpo, 'ldur'}
-ease {200, 6, outQuad, 0, 'centered2', 0, 'movey'}
+ease {200, 6, outQuad, 0, 'movey', 0, 'centered2'}
 
 
 -- WUBWUBWUBWUB
@@ -179,4 +180,4 @@ add
     {260, 8, inExpo, -5000, 'tinyz', 50, 'reverse'}
     {264, 4, inQuad, 0, 'zoomy'}
 set {268, 100, 'zoomy', 0, 'wave', 0, 'rotationz', 0, 'rotationy', 0, 'tinyy', 0, 'tinyz', 0, 'reverse', 2000, 'z'}
-ease {268, 2, outExpo, 0, 'tiny', 0, 'z', 0, 'flip'}
+ease {268, 4, outExpo, 0, 'tiny', 0, 'z', 0, 'flip'}
