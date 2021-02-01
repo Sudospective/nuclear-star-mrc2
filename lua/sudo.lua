@@ -58,23 +58,37 @@ for beat = 144, 190, 2 do
     {beat - 0.5, 1, inOutQuad, -2500, 'tinyz', plr = 2}
     {beat + 0.5, 1, inOutQuad, -2500, 'tinyz', plr = 1}
     {beat + 0.5, 1, inOutQuad, 5000, 'tinyz', plr = 2}
-    {beat, 1, bounce, -00, 'wave'}
-    {beat + 1, 1, bounce, -00, 'wave'}
+    {beat, 1, bounce, 0, 'wave'}
+    {beat + 1, 1, bounce, 0, 'wave'}
 end
 ease {191, 1, inOutSine, 0, 'wave', 0, 'tornado', 0, 'tinyz', 0, 'tinyy', 0, 'tinyx', 0, 'holdgirth', 0, 'bumpy', 0, 'bumpyx', 0, 'drunk', 0, 'tipsy', 0, 'dark', 0, 'beat'}
 
+-- A DRIVEN DROP???? BY SUDO??????????
+ease {192, 6, linear, 900, 'centered2'}
+for beat = 193, 197 do
+    add {beat, 0, instant, -150, 'movey'}
+end
+set {198, 0, 'centered2', 0, 'movey'}
+
 -- WUBWUBWUBWUB
+swap
+{206.5, 0.5, outExpo, 'dlru'}
+{207, 0.5, outExpo, 'urld'}
+{207.5, 0.5, outExpo, 'rudl'}
+{208, 0.5, outExpo, 'ldur'}
 add 
-{208, 2, pop, 1000, 'zoomx'}
+{206, 4, inverse, -100, 'zoomx', -45, 'rotationx', -10000, 'parabolaz', 50, 'reverse', 5000, 'tinyz'}
 {210, 5, spike, 40000, 'tinyz'}
 {211, 3, inverse, 10, 'rotationx', -314.15 / 18, 'confusionxoffset', 100, 'invert', 200, 'bumpy'}
 {211, 3, spike, 90, 'rotationy', -314.15 / 2, 'confusionyoffset'}
+--[[ -- not sure about this part???
 mirror
 {214, 0.5, inOutQuad, 30, 'tinyy', -30, 'tinyx', -100, 'drunk', 100, 'tipsy'}
 {214.5, 0.5, inOutQuad, -30, 'tinyy', 30, 'tinyx', 100, 'drunk', -100, 'tipsy'}
 {215, 0.5, inOutQuad, 30, 'tinyy', -30, 'tinyx', -100, 'drunk', 100, 'tipsy'}
 {215.5, 0.5, inOutQuad, -30, 'tinyy', 30, 'tinyx', 100, 'drunk', -100, 'tipsy'}
 {216, 0.5, inOutQuad, 0, 'tinyy', 0, 'tinyx', 0, 'drunk', 0, 'tipsy'}
+]]--
 ease
 {219.5, 0.5, outExpo, 100, 'invert'}
 {220, 0.5, outExpo, 100, 'reverse'}
