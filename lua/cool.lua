@@ -246,6 +246,17 @@ ease{226.25,0.75,inCubic,0,'flip',0,'drunk',0,'tipsy'}
 mirror{226,0.25,outQuad,-500,'movez'}
 mirror{226.25,0.75,inQuad,0,'movez'}
 
+set {230, 75, 'movey'} -- 150 for 1.5x
+ease {230, 2, linear, 300, 'centered2'} -- Multiple of previous number
+for beat = 230, 232, 0.5 do
+    add {beat, 0, instant, -75, 'movey'} -- Same number as first
+    mirroradd{beat, 0.5, outCubic, -100,'bumpyx'}
+end
+set{232,0,'centered2',0,'movey',0,'bumpyx'}
+ease{232,1,outExpo,90,'zoomx',200,'zoomy'}
+ease{233,1,outExpo,150,'zoomx',80,'zoomy'}
+ease{234,1,outExpo,100,'zoomx',100,'zoomy'}
+
 
 
 --second half--
