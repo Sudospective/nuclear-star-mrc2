@@ -254,8 +254,24 @@ for beat = 230, 232, 0.5 do
 end
 set{232,0,'centered2',0,'movey',0,'bumpyx'}
 ease{232,1,outExpo,90,'zoomx',200,'zoomy'}
-ease{233,1,outExpo,150,'zoomx',80,'zoomy'}
+ease{233,1,outExpo,150,'zoomx',80,'zoomy',100,'distant',2,'xmod'}
 ease{234,1,outExpo,100,'zoomx',100,'zoomy'}
+local bewahh = {
+	{234.000,1,1},
+	{234.750,2,1},
+	{235.000,1,1},
+	{235.500,0,1},
+	{236.000,3,1},
+	{236.750,1,1},
+	{237.500,2,1},
+}
+for i,v in ipairs(bewahh) do
+    add{v[1],0.5,outQuad,20,'distant'}
+end
+
+ease {234, 4, linear, 800, 'centered2'} -- Multiple of previous number
+ease {238, 4, outElastic, 0, 'centered2', 0, 'distant', 1.5, 'xmod'}
+
 
 
 
