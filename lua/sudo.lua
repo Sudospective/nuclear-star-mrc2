@@ -132,16 +132,14 @@ add
     {206, 4, inverse, -100, 'zoomx', 45, 'rotationx', 10000, 'parabolaz', 50, 'reverse', 5000, 'tinyz', 800, 'zoomz', 100, 'stealth'}
     {210, 5, spike, 40000, 'tinyz', 1000, 'longholds', 100, 'tornado'}
     {211.5, 2, bounce, 95, 'stealth'}
-    {211, 3, inverse, 10, 'rotationx', -314.15 / 18, 'confusionxoffset', 100, 'invert', 100, 'bumpy'}
+    {211, 3, inverse, 10, 'rotationx', -314.15 / 18, 'confusionxoffset', 100, 'invert', 100, 'bumpy', -100, 'reverse'}
     {211, 3, spike, 45, 'rotationy', -314.15 / 4, 'confusionyoffset', -800, 'zoomz'}
---[[ -- not sure about this part???
 mirror
-    {214, 0.5, inOutQuad, 30, 'tinyy', -30, 'tinyx', -100, 'drunk', 100, 'tipsy'}
-    {214.5, 0.5, inOutQuad, -30, 'tinyy', 30, 'tinyx', 100, 'drunk', -100, 'tipsy'}
-    {215, 0.5, inOutQuad, 30, 'tinyy', -30, 'tinyx', -100, 'drunk', 100, 'tipsy'}
-    {215.5, 0.5, inOutQuad, -30, 'tinyy', 30, 'tinyx', 100, 'drunk', -100, 'tipsy'}
-    {216, 0.5, inOutQuad, 0, 'tinyy', 0, 'tinyx', 0, 'drunk', 0, 'tipsy'}
-]]--
+    {219.5, 0.5, inOutQuad, 30, 'tinyy', -30, 'tinyx', -50, 'drunk', 50, 'tipsy'}
+    {220, 0.5, inOutQuad, -30, 'tinyy', 30, 'tinyx', 50, 'drunk', -50, 'tipsy'}
+    {220.5, 0.5, inOutQuad, 30, 'tinyy', -30, 'tinyx', -50, 'drunk', 50, 'tipsy'}
+    {221, 0.5, inOutQuad, -30, 'tinyy', 30, 'tinyx', 50, 'drunk', -50, 'tipsy'}
+    {221.5, 0.5, inOutQuad, 0, 'tinyy', 0, 'tinyx', 0, 'drunk', 0, 'tipsy'}
 ease
     {219.5, 0.5, outExpo, 100, 'invert', -10, 'rotationy', 800, 'zoomz'}
     {220, 0.5, outExpo, 100, 'reverse'}
@@ -151,15 +149,21 @@ ease
 add
     {226, 5, spike, 40000, 'tinyz', 1000, 'longholds', 100, 'tornado'}
     {227.5, 2, bounce, 95, 'stealth'}
-    {227, 3, inverse, 10, 'rotationx', -314.15 / 18, 'confusionxoffset', 100, 'invert', 200, 'bumpy'}
+    {227, 3, inverse, 10, 'rotationx', -314.15 / 18, 'confusionxoffset', 100, 'invert', 100, 'bumpy', -100, 'reverse'}
     {227, 3, spike, -45, 'rotationy', 314.15 / 4, 'confusionyoffset', -800, 'zoomz'}
 
 add 
     --{238, 4, inverse, -100, 'zoomx', -45, 'rotationx', -10000, 'parabolaz', 50, 'reverse', 5000, 'tinyz'} -- maybe something else a second time
     {242, 5, spike, 40000, 'tinyz', 1000, 'longholds', 100, 'tornado'}
     {243.5, 2, bounce, 95, 'stealth'}
-    {243, 3, inverse, 10, 'rotationx', -314.15 / 18, 'confusionxoffset', 100, 'invert', 200, 'bumpy'}
+    {243, 3, inverse, 10, 'rotationx', -314.15 / 18, 'confusionxoffset', 100, 'invert', 100, 'bumpy', -100, 'reverse'}
     {243, 3, spike, 45, 'rotationy', -314.15 / 4, 'confusionyoffset', -800, 'zoomz'}
+mirror
+    {251.5, 0.5, inOutQuad, 30, 'tinyy', -30, 'tinyx', -50, 'drunk', 50, 'tipsy'}
+    {252, 0.5, inOutQuad, -30, 'tinyy', 30, 'tinyx', 50, 'drunk', -50, 'tipsy'}
+    {252.5, 0.5, inOutQuad, 30, 'tinyy', -30, 'tinyx', -50, 'drunk', 50, 'tipsy'}
+    {253, 0.5, inOutQuad, -30, 'tinyy', 30, 'tinyx', 50, 'drunk', -50, 'tipsy'}
+    {253.5, 0.5, inOutQuad, 0, 'tinyy', 0, 'tinyx', 0, 'drunk', 0, 'tipsy'}
 ease
     {251.5, 0.5, outExpo, 100, 'invert', -10, 'rotationy', 800, 'zoomz'}
     {252, 0.5, outExpo, 100, 'reverse'}
