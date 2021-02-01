@@ -25,6 +25,8 @@ func {108, function()
 end, persist = false}
 
 -- squinshies
+ease
+{128, 8, inExpo, 50, 'flip', 50, 'stealth', -1000, 'tiny', 2, 'xmod', 7500, 'longholds', 200, 'zoomy'}
 func {136, function()
     for pn = 1, 2 do
         P[pn]:x(scx)
@@ -36,9 +38,8 @@ set
     {136, 100, 'stealth0', 100, 'stealth1', plr = 2}
 ease
     {136, 1.5, outExpo, 100, 'dark'}
-    {136, 4, outExpo, 0, 'drunk', 0, 'tipsy'}
-    {136, 4, outExpo, 0.15, 'xmod', 0, 'rotationx', -314.15 / 4, 'confusionxoffset', -10000, 'tinyz'}
-    {136, 6, inOutQuad, 0.5, 'xmod', 0, 'rotationx', 0, 'confusionxoffset', 0, 'tinyz'}
+    {136, 1, outExpo, 0, 'drunk', 0, 'tipsy', 0, 'flip', 0.15, 'xmod', 0, 'rotationx', -314.15 / 4, 'confusionxoffset', -10000, 'tinyz', 0, 'tiny', 0, 'longholds'}
+    {136, 6, inOutQuad, 0.5, 'xmod', 0, 'rotationx', 0, 'confusionxoffset', 100, 'zoomy', 0, 'tinyz', 0, 'stealth'}
     {142, 2, spike, 50, 'stealth'}
     {142.5, 1, inOutExpo, 0, 'stealth2', 0, 'stealth3', plr = 1}
     {142.5, 1, inOutExpo, 0, 'stealth0', 0, 'stealth1', plr = 2}
@@ -59,17 +60,50 @@ for beat = 144, 190, 2 do
         {beat - 0.5, 1, inOutQuad, -2500, 'tinyz', plr = 2}
         {beat + 0.5, 1, inOutQuad, -2500, 'tinyz', plr = 1}
         {beat + 0.5, 1, inOutQuad, 5000, 'tinyz', plr = 2}
-    {beat, 1, bounce, 0, 'wave'}
-    {beat + 1, 1, bounce, 0, 'wave'}
+        {beat, 1, bounce, 0, 'wave'}
+        {beat + 1, 1, bounce, 0, 'wave'}
 end
-ease {191, 1, inOutSine, 0, 'wave', 0, 'tornado', 0, 'tinyz', 0, 'tinyy', 0, 'tinyx', 0, 'holdgirth', 0, 'bumpy', 0, 'bumpyx', 0, 'drunk', 0, 'tipsy', 0, 'dark', 0, 'beat'}
+ease
+{175.5, 2, bell, 0, 'noteskewx', 0, 'noteskewy', 0, 'tinyx', 0, 'tinyy', 0, 'tinyz', 0, 'beat', 0, 'drunk', 0, 'tipsy', 0, 'wave', 0, 'tornado', 0, 'bumpy', 0, 'bumpyx'}
+{176, 1, bounce, 20, 'flip', 70, 'dark'}
+{177, 1, outExpo, -25, 'flip', -25, 'invert'}
+swap
+{177, 0.5, outExpo, 'ludr'}
+{178, 0.5, outExpo, 'ldur'}
+{178.5, 0.5, outExpo, 'ludr'}
+{179, 0.5, outExpo, 'ldur'}
+{180, 0.5, outExpo, 'ludr'}
+{181, 0.5, outExpo, 'ldur'}
+{181.5, 0.5, outExpo, 'ludr'}
+{182.5, 0.5, outExpo, 'ldur'}
+{183, 0.5, outExpo, 'ludr'}
+{183.5, 0.5, outExpo, 'ldur'}
+{184, 0.5, outExpo, 'ludr'}
+{185, 0.5, outExpo, 'ldur'}
+{186, 0.5, outExpo, 'ludr'}
+{186.5, 0.5, outExpo, 'ldur'}
+{187, 0.5, outExpo, 'ludr'}
+{188, 0.5, outExpo, 'ldur'}
+{188.5, 0.5, outExpo, 'ludr'}
+{189, 0.5, outExpo, 'ldur'}
+
+ease
+{190, 0.5, outBack, 100, 'reverse0'}
+{190.25, 0.5, outBack, 100, 'reverse1'}
+{190.5, 0.5, outBack, 100, 'reverse2'}
+{190.75, 0.5, outBack, 100, 'reverse3'}
+
+{191, 1, outBack, 0, 'reverse0', 0, 'reverse1', 0, 'reverse2', 0, 'reverse3'}
+{191, 1, inExpo, 0, 'flip', 0, 'invert'}
+{191, 1, inOutSine, 0, 'wave', 0, 'tornado', 0, 'tinyz', 0, 'tinyy', 0, 'tinyx', 0, 'holdgirth', 0, 'bumpy', 0, 'bumpyx', 0, 'drunk', 0, 'tipsy', 0, 'dark', 0, 'beat'}
 
 -- A DRIVEN DROP???? BY SUDO??????????
 ease {192, 6, linear, 900, 'centered2'}
 for beat = 193, 197 do
     add {beat, 0, instant, -150, 'movey'}
 end
-set {198, 0, 'centered2', 0, 'movey'}
+ease {198, 8, inOutQuad, 0, 'centered2', 0, 'movey'}
+
 
 -- WUBWUBWUBWUB
 swap
