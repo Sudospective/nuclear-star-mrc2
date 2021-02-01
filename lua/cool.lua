@@ -75,6 +75,7 @@ node {'ypos', function(y, pn)
     P[pn]:y(y)
 end}
 
+<<<<<<< HEAD
 definemod{'offset','amt','eccentricityx','eccentricityz',function(offset,amt,ex,ez,plr)
     local pi=math.pi/4
     local movex0, movex1, movex2, movex3 =
@@ -102,6 +103,8 @@ end,
 setdefault{90,'eccentricityx',320,'eccentricityz'} 
 
 
+=======
+>>>>>>> 7c5ab6a69b62ceb120dbd6cb9530db29ffb91f80
     
 set {0, scx, 'xpos',1000,'tipsy',3000,'drunk',720,'rotationz',-1256,'confusionoffset', plr = 1}
 set {0, scx, 'xpos',-1000,'tipsy',-3000,'drunk',-720,'rotationz',1256,'confusionoffset', plr = 2}
@@ -211,6 +214,7 @@ end
 for i,v in ipairs(arrowpath) do
     ease{v[1],0.25,outSine,100,'arrowpath'..v[2]}
     ease{v[1]+0.25,1,inOutSine,0,'arrowpath'..v[2]}
+<<<<<<< HEAD
 end
 
 
@@ -225,4 +229,6 @@ local offset_speen = 45
 for i = 400,447 do
     ease{i,1,outBack,offset_speen+1,'offset'}
     offset_speen = offset_speen + 1
+=======
+>>>>>>> 7c5ab6a69b62ceb120dbd6cb9530db29ffb91f80
 end
