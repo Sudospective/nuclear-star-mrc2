@@ -134,6 +134,15 @@ add
     {211.5, 2, bounce, 95, 'stealth'}
     {211, 3, inverse, 10, 'rotationx', -314.15 / 18, 'confusionxoffset', 100, 'invert', 100, 'bumpy', -100, 'reverse'}
     {211, 3, spike, 45, 'rotationy', -314.15 / 4, 'confusionyoffset', -800, 'zoomz'}
+    {216, 1, outExpo, 400, 'zoomz'}
+    {217, 1, inExpo, 100, 'zoomz'}
+mirror
+    {216, 1, outExpo, 15, 'rotationz', 60, 'rotationy', 50, 'spiralx'}
+    {217, 1, inExpo, 0, 'rotationz', 0, 'rotationy', 0, 'spiralx'}
+mirroradd
+    {214, 7, spike, -30, 'rotationz', -120, 'rotationy'}
+ease
+    {218.5, 1, bell, 100, 'reverse'}
 mirror
     {219.5, 0.5, inOutQuad, 30, 'tinyy', -30, 'tinyx', -50, 'drunk', 50, 'tipsy'}
     {220, 0.5, inOutQuad, -30, 'tinyy', 30, 'tinyx', 50, 'drunk', -50, 'tipsy'}
@@ -146,7 +155,10 @@ ease
     {220.5, 0.5, outExpo, 0, 'invert', 100, 'flip', 10, 'rotationy'}
     {221, 0.5, outExpo, 0, 'reverse'}
     {221.5, 0.5, outExpo, 0, 'flip', 0, 'rotationy', 100, 'zoomz'}
+ease
+    {222, 2, pop, 50, 'reverse', 50, 'flip', 200, 'drunk', 200, 'tipsy'}
 add
+    {222, 2, outExpo, 360, 'rotationz', -314.15 * 2, 'confusionzoffset'}
     {226, 5, spike, 40000, 'tinyz', 1000, 'longholds', 100, 'tornado'}
     {227.5, 2, bounce, 95, 'stealth'}
     {227, 3, inverse, 10, 'rotationx', -314.15 / 18, 'confusionxoffset', 100, 'invert', 100, 'bumpy', -100, 'reverse'}
