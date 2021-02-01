@@ -63,7 +63,7 @@
 	-- Default Mods
     AFTSprite:diffusealpha(0 * aftMult)
 	AFTSprite:zoom(1)
-	setdefault {1.5, 'xmod', 100, 'stealthpastreceptors', 0, 'straightholds'}
+	setdefault {1.5, 'xmod', 100, 'stealthpastreceptors', 0, 'straightholds', 100, 'modtimer'}
 	func {0, 999, function()
     	deltaTime = deltaTime + GAMESTATE:GetSongTime() - lastFrameTime
     	if deltaTime > 0 then
