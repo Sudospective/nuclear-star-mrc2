@@ -101,7 +101,7 @@ add
     {227, 3, inverse, 10, 'rotationx', -314.15 / 18, 'confusionxoffset', 100, 'invert', 200, 'bumpy'}
     {227, 3, spike, -90, 'rotationy', 314.15 / 2, 'confusionyoffset'}
 
--- Actually Tornado
+-- actually tornado
 for beat = 256, 266, 2 do
     add
     {beat, 0.5, pop, 100, 'noteskewx', -100, 'noteskewy'}
