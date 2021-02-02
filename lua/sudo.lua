@@ -179,7 +179,8 @@ ease
     {234, 4, bounce, -400, 'bumpy', 400, 'bumpyperiod'}
 ]]--
 add 
-    --{238, 4, inverse, -100, 'zoomx', -45, 'rotationx', -10000, 'parabolaz', 50, 'reverse', 5000, 'tinyz'} -- maybe something else a second time
+    {238, 4, inverse, -100, 'zoomx', 45, 'rotationx', 10000, 'parabolaz', 50, 'reverse', 5000, 'tinyz', 800, 'zoomz', 100, 'stealth'}
+    {238, 2, bounce, 0.1, 'xmod', 100, 'brake'}
     {242, 5, spike, 40000, 'tinyz', 1000, 'longholds', 100, 'tornado'}
     {243.5, 2, bounce, 95, 'stealth'}
     {243, 3, bell, 800, 'tornadoperiod'}
@@ -199,8 +200,6 @@ ease
     {252.5, 0.5, outExpo, 0, 'invert', 100, 'flip', 10, 'rotationy'}
     {253, 0.5, outExpo, 0, 'reverse'}
     {253.5, 0.5, outExpo, 0, 'flip', 0, 'rotationy', 100, 'zoomz'}
-add
-    {238, 4, inverse, -100, 'zoomx', 45, 'rotationx', 10000, 'parabolaz', 50, 'reverse', 5000, 'tinyz', 800, 'zoomz', 100, 'stealth'}
 
 for beat = 240, 255, 2 do
     add
@@ -250,3 +249,14 @@ for beat = 432, 446, 4 do
         {beat + 2, 1, outExpo, 225, 'invert', -75, 'flip', 0, 'eccentricityx', 0, 'eccentricityz', 200, 'amt'}
         {beat + 3, 1, outExpo, 0, 'invert', 50, 'flip', 90, 'eccentricityx', 320, 'eccentricityz', 400, 'amt'}
 end
+
+set {460, 50, 'flip', 50, 'reverse'}
+set {468, 30, 'targetx1', 0, 'targetx4', 0, 'targety2', 0, 'targety3', 0, 'rotationz', 0, 'xmod'}
+ease
+    {458, 2, inExpo, 400, 'z', 1000, 'zoomz', 60, 'rotationx', 1000, 'parabolaz'}
+    {460, 3, outExpo, 0, 'z', 100, 'zoomz', 75, 'tiny', 50, 'reverse', -50, 'targetx1', 50, 'targetx4', 50, 'targety2', -50, 'targety3', 0, 'rotationx', 0, 'parabolaz', -360, 'rotationz'}
+    {464, 1, outQuad, 100, 'stealth', 100, 'dark'}
+    {468, 26, linear, 800, 'zoomz', -20000, 'tinyz'}
+    {468, 26, inExpo, 1500, 'z'}
+    {468, 26, inExpo, 50, 'stealth'}
+    {494, 0.25, outExpo, 100, 'stealth'}
