@@ -198,6 +198,9 @@ ease
     {253, 0.5, outExpo, 0, 'reverse'}
     {253.5, 0.5, outExpo, 0, 'flip', 0, 'rotationy', 100, 'zoomz'}
 
+add
+    {238, 4, inverse, -100, 'zoomx', 45, 'rotationx', 10000, 'parabolaz', 50, 'reverse', 5000, 'tinyz', 800, 'zoomz', 100, 'stealth'}
+
 -- actually tornado
 for beat = 256, 266, 2 do
     add
