@@ -378,7 +378,12 @@ for beat = 246, 248, 0.5 do
     mirroradd{beat, 0.5, outCubic, -100,'tipsy',100,'drunk'}
 end
 set{248,0,'centered2',0,'movey',0,'tipsy',0,'drunk'}
-
+ease{248,1,outExpo,200,'amt',50,'flip'}
+local e_offset = 0
+for i = 429,430.5,0.5 do
+	ease{i,1,outBack,e_offset+1,'offset'}
+	e_offset = e_offset + 1
+end
 
 
 --second half--
@@ -443,3 +448,5 @@ for i = 454,455.5,0.5 do
 	ease{i,1,outBack,offset_speen-1,'offset'}
 	offset_speen = offset_speen - 1
 end
+
+ease{460,4,outCubic,0,'amt'}
