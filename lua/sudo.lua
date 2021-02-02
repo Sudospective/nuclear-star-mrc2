@@ -130,7 +130,7 @@ swap
 ease {200, 6, outQuad, 0, 'movey', 0, 'centered2'}
 
 
--- WUBWUBWUBWUB
+-- i ate some wubby bagels and now im wubby
 swap
     {206.5, 0.5, outExpo, 'dlru'}
     {207, 0.5, outExpo, 'urld'}
@@ -212,9 +212,31 @@ add
 set {268, 100, 'zoomy', 0, 'wave', 0, 'rotationz', 0, 'rotationy', 0, 'tinyy', 0, 'tinyz', 0, 'reverse', 2000, 'z'}
 ease {268, 4, outExpo, 0, 'tiny', 0, 'z', 0, 'flip'}
 
+-- i am not floating again in space
+func {272, function()
+    AFTSprite:zoom(1.2)
+    AFTSprite:diffusealpha(0.9 * aftMult)
+    AFTSprite:decelerate(2 * spb)
+    AFTSprite:zoom(1.005)
+    AFTSprite:diffusealpha(0.85 * aftMult)
+end, persist = false}
+
+-- it may be a halo but this is definitely not holy
+func {392, function()
+    AFTSprite:diffusealpha(0.98 * aftMult)
+    AFTSprite:accelerate(8 * spb)
+    AFTSprite:diffusealpha(0 * aftMult)
+end, persist = false}
 ease {392, 4, outExpo, 200, 'drawsize'}
-for beat = 432, 446, 2 do
+for beat = 432, 446, 4 do
+    mirroradd
+        {beat, 1, outExpo, -200, 'movex'}
+        {beat + 1, 1, outExpo, 200, 'movex'}
+        {beat + 2, 1, outExpo, -200, 'movex'}
+        {beat + 3, 1, outExpo, 200, 'movex'}
     ease
-        {beat, 1, outExpo, 175, 'invert', -175, 'flip'}
-        {beat + 1, 1, outExpo, 0, 'invert', 50, 'flip'}
+        {beat, 1, outExpo, 100, 'invert', -100, 'flip', 0, 'eccentricityx', 0, 'eccentricityz', 200, 'amt'}
+        {beat + 1, 1, outExpo, 0, 'invert', 50, 'flip', 90, 'eccentricityx', 320, 'eccentricityz', 400, 'amt'}
+        {beat + 2, 1, outExpo, 225, 'invert', -75, 'flip', 0, 'eccentricityx', 0, 'eccentricityz', 200, 'amt'}
+        {beat + 3, 1, outExpo, 0, 'invert', 50, 'flip', 90, 'eccentricityx', 320, 'eccentricityz', 400, 'amt'}
 end
