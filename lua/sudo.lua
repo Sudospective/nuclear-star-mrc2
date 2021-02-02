@@ -270,9 +270,11 @@ set {391, 100, 'halgun'}
 ease
     {384, 8, inExpo, 95, 'stealth', -1000, 'tiny', 2, 'xmod', 7500, 'longholds', 200, 'zoomy'}
     {392, 4, outExpo, 200, 'drawsize', 0, 'drunk', 0, 'tipsy'}
+    {392, 1.5, outExpo, 100, 'dark', 100, 'invert'}
     {392, 1, outExpo, 0.15, 'xmod', 0, 'rotationx', -314.15 / 4, 'confusionxoffset', -10000, 'tinyz', 0, 'tiny', 0, 'longholds'}
-    {392, 7, inOutQuad, 0.5, 'xmod', 0, 'rotationx', 0, 'confusionxoffset', 100, 'zoomy', 0, 'tinyz', 0, 'stealth', 0, 'confusionzoffset'}
+    {392, 7, inOutQuad, 0.5, 'xmod', 0, 'dark', 0, 'confusionzoffset', 0, 'rotationx', 0, 'confusionxoffset', 100, 'zoomy', 0, 'tinyz', 0, 'stealth', 0, 'confusionzoffset'}
     {398, 2, inExpo, 1.5, 'xmod'}
+    {398.5, 1, outBack, 0, 'invert'}
 mirror
     {398, 2, inExpo, 200, 'beat'}
     {446, 2, inExpo, 0, 'beat'}
