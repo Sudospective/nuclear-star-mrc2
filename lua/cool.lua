@@ -240,6 +240,10 @@ for beat = 214, 216, 0.5 do
 end
 set{216,0,'centered2',0,'movey',0,'drunk'}
 
+ease{224,1,outCubic,250,'amt',50,'flip'}
+ease{224,2,inCubic,0,'amt',0,'flip'}
+ease{224,1.75,outCubic,10,'offset'}
+
 ease{225.75,0.25,outCubic,25,'flip'}
 ease{226,0.25,outQuad,-100,'flip',400,'drunk',100,'tipsy'}
 ease{226.25,0.75,inCubic,0,'flip',0,'drunk',0,'tipsy'}
@@ -272,14 +276,18 @@ end
 ease {234, 4, linear, 800, 'centered2'} -- Multiple of previous number
 ease {238, 4, outElastic, 0, 'centered2', 0, 'distant', 1.5, 'xmod'}
 
+set{240,0,'offset'}
+ease{240,1,outCubic,350,'amt',50,'flip'}
+ease{241,2,inCubic,0,'amt',0,'flip'}
+ease{240,1.75,outCubic,10,'offset'}
 
 
 
 --second half--
 
 
-ease{364,4,outSine,2.5,'xmod',50,'flip'}
-ease{368,16,inSine,400,'amt',1.75,'xmod'}
+--ease{364,4,outSine,2.5,'xmod',50,'flip'}
+ease{368,16,inSine,400,'amt',50,'flip'}
 ease{368,24,inCubic,55,'offset'}
 ease{392,8,outCubic,45,'offset'}
 local offset_speen = 45
