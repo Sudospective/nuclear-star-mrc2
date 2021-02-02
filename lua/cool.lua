@@ -427,3 +427,19 @@ for i = 400,447 do
     ease{i,1,outBack,offset_speen+1,'offset'}
     offset_speen = offset_speen + 1
 end
+for i = 448,449.5,0.5 do
+	ease{i,1,outBack,offset_speen+1,'offset'}
+	offset_speen = offset_speen + 1
+end
+for i = 450,451.5,0.5 do
+	ease{i,1,outBack,offset_speen-1,'offset'}
+	offset_speen = offset_speen - 1
+end
+for i = 452,453.5,0.5 do
+	ease{i,1,outBack,offset_speen+1,'offset'}
+	offset_speen = offset_speen + 1
+end
+for i = 454,455.5,0.5 do
+	ease{i,1,outBack,offset_speen-1,'offset'}
+	offset_speen = offset_speen - 1
+end
