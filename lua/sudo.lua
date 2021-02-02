@@ -185,6 +185,8 @@ add
     {243, 3, bell, 800, 'tornadoperiod'}
     {243, 3, inverse, 10, 'rotationx', -314.15 / 18, 'confusionxoffset', 100, 'invert', 100, 'bumpy', -100, 'reverse'}
     {243, 3, spike, 45, 'rotationy', -314.15 / 4, 'confusionyoffset', -800, 'zoomz'}
+ease
+    {250.5, 1, bell, 100, 'reverse'}
 mirror
     {251.5, 0.5, inOutQuad, 30, 'tinyy', -30, 'tinyx', -50, 'drunk', 50, 'tipsy'}
     {252, 0.5, inOutQuad, -30, 'tinyy', 30, 'tinyx', 50, 'drunk', -50, 'tipsy'}
@@ -197,15 +199,20 @@ ease
     {252.5, 0.5, outExpo, 0, 'invert', 100, 'flip', 10, 'rotationy'}
     {253, 0.5, outExpo, 0, 'reverse'}
     {253.5, 0.5, outExpo, 0, 'flip', 0, 'rotationy', 100, 'zoomz'}
-
 add
     {238, 4, inverse, -100, 'zoomx', 45, 'rotationx', 10000, 'parabolaz', 50, 'reverse', 5000, 'tinyz', 800, 'zoomz', 100, 'stealth'}
+
+for beat = 240, 255, 2 do
+    add
+        {beat, 0.5, pop, -100, 'holdgirth', -100, 'drunk', 100, 'tipsy'}
+        {beat + 1, 0.5, pop, -100, 'holdgirth', 100, 'drunk', -100, 'tipsy'}
+end
 
 -- actually tornado
 for beat = 256, 266, 2 do
     add
-    {beat, 1, pop, 100, 'noteskewx', -100, 'noteskewy', 15, 'zoom'}
-    {beat + 1, 1, pop, -100, 'noteskewx', 100, 'noteskewy', 15, 'zoom'}
+        {beat, 0.5, pop, -100, 'holdgirth', 100, 'noteskewx', -100, 'noteskewy', 15, 'zoom', -100, 'drunk', 100, 'tipsy'}
+        {beat + 1, 0.5, pop, -100, 'holdgirth', -100, 'noteskewx', 100, 'noteskewy', 15, 'zoom', 100, 'drunk', -100, 'tipsy'}
 end
 add
     {256, 4, inQuad, 300, 'wave'}
