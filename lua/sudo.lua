@@ -22,6 +22,23 @@ func {16, function()
     AFTSprite:diffusealpha(0.85 * aftMult)
 end, persist = false}
 
+func {76, function()
+    AFTSprite:zoom(1.05)
+    AFTSprite:diffusealpha(0.9 * aftMult)
+    AFTSprite:decelerate(2 * spb)
+    AFTSprite:zoom(1.005)
+    AFTSprite:diffusealpha(0.85 * aftMult)
+    AFTSprite:accelerate(2 * spb)
+    AFTSprite:zoom(1.05)
+    AFTSprite:diffusealpha(0.9 * aftMult)
+end, persist = false}
+func {80, function()
+    AFTSprite:zoom(1.2)
+    AFTSprite:decelerate(2 * spb)
+    AFTSprite:zoom(1.005)
+    AFTSprite:diffusealpha(0.85 * aftMult)
+end, persist = false}
+
 func {136, function()
     AFTSprite:diffusealpha(0.98 * aftMult)
     AFTSprite:accelerate(8 * spb)
@@ -144,7 +161,7 @@ add
     {210, 5, spike, 40000, 'tinyz', 1000, 'longholds', 100, 'tornado'}
     {211.5, 2, bounce, 95, 'stealth'}
     {211, 3, bell, 800, 'tornadoperiod'}
-    {211, 3, inverse, 10, 'rotationx', -314.15 / 18, 'confusionxoffset', 100, 'invert', 100, 'bumpy', -100, 'reverse'}
+    {211, 3, inverse, 30, 'rotationx', -314.15 / 6, 'confusionxoffset', 1500, 'parabolaz', 100, 'invert', 100, 'bumpy', -100, 'reverse'}
     {211, 3, spike, 45, 'rotationy', -314.15 / 4, 'confusionyoffset', -800, 'zoomz'}
     {216, 1, outExpo, 400, 'zoomz'}
     {217, 1, inExpo, 100, 'zoomz'}
@@ -174,7 +191,7 @@ add
     {226, 5, spike, 40000, 'tinyz', 1000, 'longholds', 100, 'tornado'}
     {227.5, 2, bounce, 95, 'stealth'}
     {227, 3, bell, 800, 'tornadoperiod'}
-    {227, 3, inverse, 10, 'rotationx', -314.15 / 18, 'confusionxoffset', 100, 'invert', 100, 'bumpy', -100, 'reverse'}
+    {227, 3, inverse, 30, 'rotationx', -314.15 / 6, 'confusionxoffset', 1500, 'parabolaz', 100, 'invert', 100, 'bumpy', -100, 'reverse'}
     {227, 3, spike, -45, 'rotationy', 314.15 / 4, 'confusionyoffset', -800, 'zoomz'}
 
 --[[ --goddammit shut up sudo
@@ -187,7 +204,7 @@ add
     {242, 5, spike, 40000, 'tinyz', 1000, 'longholds', 100, 'tornado'}
     {243.5, 2, bounce, 95, 'stealth'}
     {243, 3, bell, 800, 'tornadoperiod'}
-    {243, 3, inverse, 10, 'rotationx', -314.15 / 18, 'confusionxoffset', 100, 'invert', 100, 'bumpy', -100, 'reverse'}
+    {243, 3, inverse, 30, 'rotationx', -314.15 / 6, 'confusionxoffset', 1500, 'parabolaz', 100, 'invert', 100, 'bumpy', -100, 'reverse'}
     {243, 3, spike, 45, 'rotationy', -314.15 / 4, 'confusionyoffset', -800, 'zoomz'}
 ease
     {250.5, 1, bell, 100, 'reverse'}
@@ -233,12 +250,18 @@ func {272, function()
     AFTSprite:diffusealpha(0.85 * aftMult)
 end, persist = false}
 
+ease {271, 2, inOutExpo, 0.5, 'xmod', 100, 'drunk', 25, 'drunkperiod', 100, 'tipsy', 25, 'tipsyperiod', -100, 'attenuatex', -100, 'attenuatez', 50, 'tornado', 400, 'tornadoperiod', 50, 'tornadoz', 800, 'tornadozperiod', 95, 'dark', -50, 'flip', -25, 'targetx1', 25, 'targetx4', 25, 'targetz2', -25, 'targetz3', 150, 'wave', 0, 'waveperiod', -70, 'reverse', 1200, 'z', 314.15 * 2, 'confusionzoffset', 800, 'zoomz', -90, 'rotationx', 314.15 / 2, 'confusionxoffset'}
+-- reset being bad boy
+--reset {332, 4, inOutQuad, exclude = {'movex', 'x', 'movey', 'y', 'offset', 'amt', 'eccentricityx', 'eccentricityz'}}
+ease {332, 4, inOutQuad, 1.5, 'xmod', 0, 'drunk', 0, 'drunkperiod', 0, 'tipsy', 0, 'tipsyperiod', 0, 'attenuatex', 0, 'attenuatez', 0, 'tornado', 0, 'tornadoperiod', 0, 'tornadoz', 0, 'tornadozperiod', 0, 'dark', 0, 'flip', 0, 'targetx1', 0, 'targetx4', 0, 'targetz2', 0, 'targetz3', 0, 'wave', 0, 'reverse', 0, 'z', 0, 'confusionzoffset', 100, 'zoomz', 0, 'rotationx', 0, 'confusionxoffset'}
+
 -- it may be a halo but this is definitely not holy
 func {392, function()
     AFTSprite:diffusealpha(0.98 * aftMult)
     AFTSprite:accelerate(8 * spb)
     AFTSprite:diffusealpha(0 * aftMult)
 end, persist = false}
+set {392, 100, 'halgun'}
 ease {392, 4, outExpo, 200, 'drawsize'}
 for beat = 432, 446, 4 do
     mirroradd
