@@ -377,13 +377,15 @@ for beat = 246, 248, 0.5 do
     add {beat, 0, instant, -75, 'movey'} -- Same number as first
     mirroradd{beat, 0.5, outCubic, -100,'tipsy',100,'drunk'}
 end
-set{248,0,'centered2',0,'movey',0,'tipsy',0,'drunk'}
-ease{248,1,outExpo,200,'amt',50,'flip'}
-local e_offset = 0
-for i = 429,430.5,0.5 do
+set{248,0,'centered2',0,'movey',0,'tipsy',0,'drunk',0,'offset'}
+ease{248,1,outExpo,200,'amt',50,'flip',-10,'offset'}
+
+local e_offset = -10
+for i = 249,250.5,0.5 do
 	ease{i,1,outBack,e_offset+1,'offset'}
 	e_offset = e_offset + 1
 end
+ease{251,1,outExpo,0,'amt',0,'flip',0,'offset'}
 
 
 --second half--
