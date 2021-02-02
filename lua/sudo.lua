@@ -1,8 +1,11 @@
 -- intro funnies
-set {0, 100, 'stealth', 100, 'dark'}
+set {0, 1500, 'z', 800, 'zoomz', -20000, 'tinyz', 100, 'stealth', 100, 'dark', 0, 'xmod', }
 ease
-{0, 16, linear, 0, 'dark'}
-{12, 4, linear, 0, 'stealth'}
+    {0, 16, linear, 100, 'zoomz', 0, 'tinyz'}
+    {0, 16, linear, 0, 'dark'}
+    {0, 16, outExpo, 0, 'z'}
+    {0, 16, inCubic, 1.5, 'xmod'}
+    {0, 16, inExpo, 0, 'stealth'}
 
 func {0, function()
     AFTSprite:linear(0.1)
@@ -257,6 +260,5 @@ ease
     {460, 3, outExpo, 0, 'z', 100, 'zoomz', 75, 'tiny', 50, 'reverse', -50, 'targetx1', 50, 'targetx4', 50, 'targety2', -50, 'targety3', 0, 'rotationx', 0, 'parabolaz', -360, 'rotationz'}
     {464, 1, outQuad, 100, 'stealth', 100, 'dark'}
     {468, 26, linear, 800, 'zoomz', -20000, 'tinyz'}
-    {468, 26, inExpo, 1500, 'z'}
-    {468, 26, inExpo, 50, 'stealth'}
+    {468, 26, inExpo, 1500, 'z', 50, 'stealth'}
     {494, 0.25, outExpo, 100, 'stealth'}
