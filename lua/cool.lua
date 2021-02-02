@@ -449,4 +449,4 @@ for i = 454,455.5,0.5 do
 	offset_speen = offset_speen - 1
 end
 
-ease{460,4,outCubic,0,'amt'}
+ease{460,4,instant,0,'amt'}
