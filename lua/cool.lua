@@ -450,5 +450,6 @@ for i = 454,455.5,0.5 do
 	ease{i,1,outBack,offset_speen-1,'offset'}
 	offset_speen = offset_speen - 1
 end
+ease{456,4,inExpo,offset_speen+20,'offset'}
 
 ease{460,4,instant,0,'amt'}
