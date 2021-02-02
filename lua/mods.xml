@@ -61,9 +61,10 @@
 	aftsprite(AFT, AFTSprite)
 
 	-- Default Mods
+	self:fov(105)
     AFTSprite:diffusealpha(0 * aftMult)
 	AFTSprite:zoom(1)
-	setdefault {1.5, 'xmod', 100, 'stealthpastreceptors', 0, 'straightholds', 100, 'modtimer'}
+	setdefault {1.5, 'xmod', 100, 'stealthpastreceptors', 0, 'straightholds', 100, 'modtimer', 100, 'halgun'}
 	func {0, 999, function()
     	deltaTime = deltaTime + GAMESTATE:GetSongTime() - lastFrameTime
     	if deltaTime > 0 then
@@ -104,6 +105,17 @@ Type = "ActorFrame"
 	<Layer Type = "ActorProxy" Name = "PP[1]" />
 	<Layer Type = "ActorProxy" Name = "PP[2]" />
 
+	<Layer
+		Type = "BitmapText"
+		Name = "ImagineText"
+		Font = "_eurostile"
+		OnCommand = "%xero(function(self)
+			self:xy(scx, scy * 0.5)
+			self:z(100)
+			self:settext('Just use your imagination.')
+			self:hidden(1)
+		end)"
+	/>
 	<Layer Type = "Sprite" Name = "AFTSprite" />
 	<Layer Type = "ActorFrameTexture" Name = "AFT" />
 

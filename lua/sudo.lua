@@ -147,7 +147,18 @@ swap
     {197, 0.5, outExpo, 'ldur'}
     {198, 0.5, outExpo, 'urld'}
     {199, 0.5, outExpo, 'ldur'}
-ease {200, 6, outQuad, 0, 'movey', 0, 'centered2'}
+ease
+    {200, 1, outExpo, 0, 'movey', 0, 'centered2'}
+    {200, 1, outExpo, 10, 'rotationz', -360, 'rotationy', 314.15 * 2, 'confusionyoffset'}
+    {200.75, 1, outExpo, 100, 'reverse'}
+    {201.5, 1, pop, 100, 'flip', 0, 'rotationz', 800, 'zoomz', 30, 'rotationx', 750, 'parabolaz'}
+    {202, 1, outExpo, -10, 'rotationz', 0, 'rotationy', 0, 'confusionyoffset'}
+    {202.75, 1, outExpo, 0, 'reverse'}
+    {203.5, 1, pop, 100, 'flip', 0, 'rotationz', 800, 'zoomz', 30, 'rotationx', 750, 'parabolaz'}
+    {204, 1, outExpo, 10, 'rotationz', -360, 'rotationy', 314.15 * 2, 'confusionyoffset'}
+    {204.75, 1, outExpo, 100, 'reverse'}
+    {205.25, 1, pop, 100, 'flip', 0, 'rotationz', 800, 'zoomz', 30, 'rotationx', 750, 'parabolaz'}
+    {206, 1, outExpo, 0, 'rotationz', 0, 'reverse'}
 
 
 -- i ate some wubby bagels and now im wubby
@@ -193,12 +204,6 @@ add
     {227, 3, bell, 800, 'tornadoperiod'}
     {227, 3, inverse, 30, 'rotationx', -314.15 / 6, 'confusionxoffset', 1500, 'parabolaz', 100, 'invert', 100, 'bumpy', -100, 'reverse'}
     {227, 3, spike, -45, 'rotationy', 314.15 / 4, 'confusionyoffset', -800, 'zoomz'}
-
---[[ --goddammit shut up sudo
-ease
-    {234, 4, bounce, -400, 'bumpy', 400, 'bumpyperiod'}
-]]--
-add 
     {238, 4, inverse, -100, 'zoomx', 45, 'rotationx', 10000, 'parabolaz', 50, 'reverse', 5000, 'tinyz', 800, 'zoomz', 100, 'stealth'}
     {238, 2, bounce, 0.1, 'xmod', 100, 'brake'}
     {242, 5, spike, 40000, 'tinyz', 1000, 'longholds', 100, 'tornado'}
@@ -254,15 +259,25 @@ ease {271, 2, inOutExpo, 0.5, 'xmod', 100, 'drunk', 25, 'drunkperiod', 100, 'tip
 -- reset being bad boy
 --reset {332, 4, inOutQuad, exclude = {'movex', 'x', 'movey', 'y', 'offset', 'amt', 'eccentricityx', 'eccentricityz'}}
 ease {332, 4, inOutQuad, 1.5, 'xmod', 0, 'drunk', 0, 'drunkperiod', 0, 'tipsy', 0, 'tipsyperiod', 0, 'attenuatex', 0, 'attenuatez', 0, 'tornado', 0, 'tornadoperiod', 0, 'tornadoz', 0, 'tornadozperiod', 0, 'dark', 0, 'flip', 0, 'targetx1', 0, 'targetx4', 0, 'targetz2', 0, 'targetz3', 0, 'wave', 0, 'reverse', 0, 'z', 0, 'confusionzoffset', 100, 'zoomz', 0, 'rotationx', 0, 'confusionxoffset'}
-
+mirror {332, 4, inExpo, 30, 'drunk', 30, 'tipsy'}
 -- it may be a halo but this is definitely not holy
 func {392, function()
     AFTSprite:diffusealpha(0.98 * aftMult)
     AFTSprite:accelerate(8 * spb)
     AFTSprite:diffusealpha(0 * aftMult)
 end, persist = false}
-set {392, 100, 'halgun'}
-ease {392, 4, outExpo, 200, 'drawsize'}
+set {391, 100, 'halgun'}
+ease
+    {384, 8, inExpo, 95, 'stealth', -1000, 'tiny', 2, 'xmod', 7500, 'longholds', 200, 'zoomy'}
+    {392, 4, outExpo, 200, 'drawsize', 0, 'drunk', 0, 'tipsy'}
+    {392, 1, outExpo, 0.15, 'xmod', 0, 'rotationx', -314.15 / 4, 'confusionxoffset', -10000, 'tinyz', 0, 'tiny', 0, 'longholds'}
+    {392, 7, inOutQuad, 0.5, 'xmod', 0, 'rotationx', 0, 'confusionxoffset', 100, 'zoomy', 0, 'tinyz', 0, 'stealth', 0, 'confusionzoffset'}
+    {398, 2, inExpo, 1.5, 'xmod'}
+mirror
+    {398, 2, inExpo, 200, 'beat'}
+    {446, 2, inExpo, 0, 'beat'}
+add
+    {456, 8, inQuad, 90, 'offset'}
 for beat = 432, 446, 4 do
     mirroradd
         {beat, 1, outExpo, -200, 'movex'}
@@ -276,12 +291,25 @@ for beat = 432, 446, 4 do
         {beat + 3, 1, outExpo, 0, 'invert', 50, 'flip', 90, 'eccentricityx', 320, 'eccentricityz', 400, 'amt'}
 end
 
+func {460, function()
+    ImagineText:hidden(0)
+    ImagineText:decelerate(spb)
+    ImagineText:z(10)
+    ImagineText:decelerate(spb)
+    ImagineText:z(0)
+    ImagineText:sleep(2 * spb)
+    ImagineText:decelerate(spb)
+    ImagineText:diffusealpha(0)
+    
+end}
+
 set {460, 50, 'flip', 50, 'reverse'}
 set {468, 30, 'targetx1', 0, 'targetx4', 0, 'targety2', 0, 'targety3', 0, 'rotationz', 0, 'xmod'}
 ease
     {458, 2, inExpo, 400, 'z', 1000, 'zoomz', 60, 'rotationx', 1000, 'parabolaz'}
-    {460, 3, outExpo, 0, 'z', 100, 'zoomz', 75, 'tiny', 50, 'reverse', -50, 'targetx1', 50, 'targetx4', 50, 'targety2', -50, 'targety3', 0, 'rotationx', 0, 'parabolaz', -360, 'rotationz'}
-    {464, 1, outQuad, 100, 'stealth', 100, 'dark'}
+    {464, 2, tap, 500, 'z', 1000, 'zoomz'}
+    {460, 3, outExpo, 0, 'z', 100, 'zoomz', 75, 'tiny', 50, 'reverse', -50, 'targetx1', 50, 'targetx4', 50, 'targety2', -50, 'targety3', 0, 'rotationx', 0, 'parabolaz', 360, 'rotationz'}
+    {464, 1, outQuart, 100, 'stealth', 100, 'dark'}
     {468, 26, linear, 800, 'zoomz', -20000, 'tinyz'}
     {468, 26, inExpo, 1500, 'z', 50, 'stealth'}
     {494, 0.25, outExpo, 100, 'stealth'}
