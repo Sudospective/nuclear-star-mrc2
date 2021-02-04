@@ -9,7 +9,7 @@ ease
 
 func {0, function()
     AFTSprite:linear(0.1)
-    AFTSprite:diffusealpha(0.9 * aftMult)
+    AFTSprite:diffusealpha(0.9 * nukestar_aftMult)
 end, persist = false}
 func {12, function()
     AFTSprite:accelerate(4 * spb)
@@ -19,30 +19,30 @@ func {16, function()
     AFTSprite:zoom(1.2)
     AFTSprite:decelerate(2 * spb)
     AFTSprite:zoom(1.005)
-    AFTSprite:diffusealpha(0.85 * aftMult)
+    AFTSprite:diffusealpha(0.85 * nukestar_aftMult)
 end, persist = false}
 
 func {76, function()
     AFTSprite:zoom(1.05)
-    AFTSprite:diffusealpha(0.9 * aftMult)
+    AFTSprite:diffusealpha(0.9 * nukestar_aftMult)
     AFTSprite:decelerate(2 * spb)
     AFTSprite:zoom(1.005)
-    AFTSprite:diffusealpha(0.85 * aftMult)
+    AFTSprite:diffusealpha(0.85 * nukestar_aftMult)
     AFTSprite:accelerate(2 * spb)
     AFTSprite:zoom(1.05)
-    AFTSprite:diffusealpha(0.9 * aftMult)
+    AFTSprite:diffusealpha(0.9 * nukestar_aftMult)
 end, persist = false}
 func {80, function()
     AFTSprite:zoom(1.2)
     AFTSprite:decelerate(2 * spb)
     AFTSprite:zoom(1.005)
-    AFTSprite:diffusealpha(0.85 * aftMult)
+    AFTSprite:diffusealpha(0.85 * nukestar_aftMult)
 end, persist = false}
 
 func {136, function()
-    AFTSprite:diffusealpha(0.98 * aftMult)
+    AFTSprite:diffusealpha(0.98 * nukestar_aftMult)
     AFTSprite:accelerate(8 * spb)
-    AFTSprite:diffusealpha(0 * aftMult)
+    AFTSprite:diffusealpha(0 * nukestar_aftMult)
 end, persist = false}
 
 ease
@@ -249,10 +249,10 @@ ease {268, 4, outExpo, 0, 'tiny', 0, 'z', 0, 'flip'}
 -- i am not floating again in space
 func {272, function()
     AFTSprite:zoom(1.2)
-    AFTSprite:diffusealpha(0.9 * aftMult)
+    AFTSprite:diffusealpha(0.9 * nukestar_aftMult)
     AFTSprite:decelerate(2 * spb)
     AFTSprite:zoom(1.005)
-    AFTSprite:diffusealpha(0.85 * aftMult)
+    AFTSprite:diffusealpha(0.85 * nukestar_aftMult)
 end, persist = false}
 
 ease {271, 2, inOutExpo, 0.5, 'xmod', 100, 'drunk', 25, 'drunkperiod', 100, 'tipsy', 25, 'tipsyperiod', -100, 'attenuatex', -100, 'attenuatez', 50, 'tornado', 400, 'tornadoperiod', 50, 'tornadoz', 800, 'tornadozperiod', 95, 'dark', -50, 'flip', -25, 'targetx1', 25, 'targetx4', 25, 'targetz2', -25, 'targetz3', 150, 'wave', 0, 'waveperiod', -70, 'reverse', 1200, 'z', 314.15 * 2, 'confusionzoffset', 800, 'zoomz', -90, 'rotationx', 314.15 / 2, 'confusionxoffset'}
@@ -262,9 +262,9 @@ ease {332, 4, inOutQuad, 1.5, 'xmod', 0, 'drunk', 0, 'drunkperiod', 0, 'tipsy', 
 mirror {332, 4, inExpo, 30, 'drunk', 30, 'tipsy'}
 -- it may be a halo but this is definitely not holy
 func {392, function()
-    AFTSprite:diffusealpha(0.98 * aftMult)
+    AFTSprite:diffusealpha(0.98 * nukestar_aftMult)
     AFTSprite:accelerate(8 * spb)
-    AFTSprite:diffusealpha(0 * aftMult)
+    AFTSprite:diffusealpha(0 * nukestar_aftMult)
 end, persist = false}
 set {391, 100, 'halgun'}
 ease
@@ -315,42 +315,3 @@ ease
     {468, 26, linear, 800, 'zoomz', -20000, 'tinyz'}
     {468, 26, inExpo, 1500, 'z', 50, 'stealth'}
     {494, 0.25, outExpo, 100, 'stealth'}
-
--- Ad-lib stuff
-function checkadlib(pn, col, beat)
-    local PStats = STATSMAN:GetCurStageStats():GetPlayerStageStats(pn - 1)
-    P[pn]:FakeStep(col)
-    if GAMESTATE:GetSongBeat() >= 463.75 then
-        for _, curadlib in ipairs(adlibbeats) do    
-            if (curadlib + 464) + 0.125 >= beat then
-                Trace(tostring(curadlib))
-                --local offset = beat - ( math.floor(GAMESTATE:GetSongBeat() * 8) / 8 )
-                local offset = beat - (curadlib + 464)
-                if offset < 0.125 and offset > -0.125 then
-                    local flashcolor = 5
-                    local addscore = 2
-                    if offset < 0.075 and offset > -0.075 then
-                        flashcolor = 1
-                        addscore = 5
-                    end
-                    P[pn]:DidTapNote(col, flashcolor, false)
-                    adlibscore[pn] = adlibscore[pn] + addscore
-                end
-            end
-        end
-    end
-end
-func {494, function()
-    for pn = 1, 2 do
-        local stats = STATSMAN:GetCurStageStats():GetPlayerStageStats(pn - 1)
-        basescore[pn] = stats:GetActualDancePoints()
-        Trace( 'Player '..tostring(pn))
-        Trace( '----------------------------')
-        Trace( 'Base DP: '..tostring(basescore[pn]) )
-        Trace( 'Ad-lib DP: '..tostring(adlibscore[pn]))
-        Trace( 'Total DP: '..tostring(basescore[pn] + adlibscore[pn]))
-        stats:SetScore(basescore[pn] + adlibscore[pn])
-        stats:SetActualDancePoints(basescore[pn] + adlibscore[pn])
-        Trace( 'Final Grade: '..tostring(math.floor(stats:GetPercentDancePoints() * 10000) / 100))
-    end
-end}
