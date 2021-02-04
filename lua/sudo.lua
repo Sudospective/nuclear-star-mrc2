@@ -255,10 +255,10 @@ func {272, function()
     AFTSprite:diffusealpha(0.85 * nukestar_aftMult)
 end, persist = false}
 
-ease {271, 2, inOutExpo, 0.5, 'xmod', 100, 'drunk', 25, 'drunkperiod', 100, 'tipsy', 25, 'tipsyperiod', -100, 'attenuatex', -100, 'attenuatez', 50, 'tornado', 400, 'tornadoperiod', 50, 'tornadoz', 800, 'tornadozperiod', 95, 'dark', -50, 'flip', -25, 'targetx1', 25, 'targetx4', 25, 'targetz2', -25, 'targetz3', 150, 'wave', 0, 'waveperiod', -70, 'reverse', 1200, 'z', 314.15 * 2, 'confusionzoffset', 800, 'zoomz', -90, 'rotationx', 314.15 / 2, 'confusionxoffset'}
+ease {271, 2, inOutExpo, 0.45, 'xmod', 100, 'drunk', 25, 'drunkperiod', 100, 'drunkz', 25, 'tipsyperiod', -100, 'attenuatex', -100, 'attenuatez', 100, 'tornado', 400, 'tornadoperiod', 100, 'tornadoz', 800, 'tornadozperiod', 100, 'dark', -75, 'flip', -25, 'targetx1', 25, 'targetx4', 25, 'targetz2', -25, 'targetz3', 200, 'wave', -70, 'reverse', 100, 'dark', 1300, 'z', 314.15 * 2, 'confusionzoffset', 800, 'zoomz', -90, 'rotationx', 314.15 / 2, 'confusionxoffset'}
 -- reset being bad boy
 --reset {332, 4, inOutQuad, exclude = {'movex', 'x', 'movey', 'y', 'offset', 'amt', 'eccentricityx', 'eccentricityz'}}
-ease {332, 4, inOutQuad, 1.5, 'xmod', 0, 'drunk', 0, 'drunkperiod', 0, 'tipsy', 0, 'tipsyperiod', 0, 'attenuatex', 0, 'attenuatez', 0, 'tornado', 0, 'tornadoperiod', 0, 'tornadoz', 0, 'tornadozperiod', 0, 'dark', 0, 'flip', 0, 'targetx1', 0, 'targetx4', 0, 'targetz2', 0, 'targetz3', 0, 'wave', 0, 'reverse', 0, 'z', 0, 'confusionzoffset', 100, 'zoomz', 0, 'rotationx', 0, 'confusionxoffset'}
+ease {332, 4, inOutQuad, 1.5, 'xmod', 0, 'drunk', 0, 'drunkperiod', 0, 'drunkz', 0, 'tipsyperiod', 0, 'attenuatex', 0, 'attenuatez', 0, 'tornado', 0, 'tornadoperiod', 0, 'tornadoz', 0, 'tornadozperiod', 0, 'dark', 0, 'flip', 0, 'targetx1', 0, 'targetx4', 0, 'targetz2', 0, 'targetz3', 0, 'wave', 0, 'reverse', 0, 'z', 0, 'confusionzoffset', 100, 'zoomz', 0, 'rotationx', 0, 'confusionxoffset'}
 mirror {332, 4, inExpo, 30, 'drunk', 30, 'tipsy'}
 -- it may be a halo but this is definitely not holy
 func {392, function()
@@ -303,6 +303,17 @@ func {460, function()
     ImagineText:sleep(2 * spb)
     ImagineText:decelerate(spb)
     ImagineText:diffusealpha(0)
+end, persist = false}
+func {464, function()
+    AFTSprite:zoom(1.1)
+    AFTSprite:diffusealpha(0.9 * nukestar_aftMult)
+    AFTSprite:decelerate(2 * spb)
+    AFTSprite:zoom(1.005)
+    AFTSprite:diffusealpha(0.85 * nukestar_aftMult)
+end, persist = false}
+func {492, function()
+    AFTSprite:accelerate(2 * spb)
+    AFTSprite:diffusealpha(0 * nukestar_aftMult)
 end, persist = false}
 
 set {460, 50, 'flip', 50, 'reverse'}
