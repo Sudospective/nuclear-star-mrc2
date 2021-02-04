@@ -306,7 +306,7 @@ func {460, function()
 end, persist = false}
 
 set {460, 50, 'flip', 50, 'reverse'}
-set {468, 0, 'targetx1', 0, 'targetx4', 0, 'targety2', 0, 'targety3', 0, 'rotationz', 0, 'xmod'}
+set {465, 0, 'targetx1', 0, 'targetx4', 0, 'targety2', 0, 'targety3', 0, 'rotationz', 0, 'xmod'}
 ease
     {458, 2, inExpo, 400, 'z', 1000, 'zoomz', 60, 'rotationx', 1000, 'parabolaz'}
     {460, 3, outExpo, 0, 'z', 100, 'zoomz', 75, 'tiny', 50, 'reverse', -50, 'targetx1', 50, 'targetx4', 50, 'targety2', -50, 'targety3', 0, 'rotationx', 0, 'parabolaz', 360, 'rotationz'}
