@@ -196,57 +196,67 @@ end)"
 		end)"
 	/>
 	<Layer
-		Type = "Sprite"
-		Name = "StarsLeft"
-		Texture = "assets/stars.png"
+		Type = "ActorFrame"
+		Name = "StarFrame"
 		OnCommand = "%xero(function(self)
-			self:xy(0, scy)
-			self:z(-500)
-			self:zoomto(sw, sh)
-			self:rotationy(-60)
-			self:customtexturerect(0, 0, 1, 1)
-			self:texcoordvelocity(0.1, 0)
+			self:xy(scx, scy)
 		end)"
-	/>
-	<Layer
-		Type = "Sprite"
-		Name = "StarsRight"
-		Texture = "assets/stars.png"
-		OnCommand = "%xero(function(self)
-			self:xy(sw, scy)
-			self:z(-500)
-			self:zoomto(sw, sh)
-			self:rotationy(60)
-			self:customtexturerect(0, 0, 1, 1)
-			self:texcoordvelocity(-0.1, 0)
-		end)"
-	/>
-	<Layer
-		Type = "Sprite"
-		Name = "StarsUp"
-		Texture = "assets/stars.png"
-		OnCommand = "%xero(function(self)
-			self:xy(scx, 0)
-			self:z(-500)
-			self:zoomto(sw, sh)
-			self:rotationx(60)
-			self:customtexturerect(0, 0, 1, 1)
-			self:texcoordvelocity(0, 0.1)
-		end)"
-	/>
-	<Layer
-		Type = "Sprite"
-		Name = "StarsDown"
-		Texture = "assets/stars.png"
-		OnCommand = "%xero(function(self)
-			self:xy(scx, sh)
-			self:z(-500)
-			self:zoomto(sw, sh)
-			self:rotationx(-60)
-			self:customtexturerect(0, 0, 1, 1)
-			self:texcoordvelocity(0, -0.1)
-		end)"
-	/>
+	>
+		<children>
+			<Layer
+				Type = "Sprite"
+				Name = "StarsLeft"
+				Texture = "assets/stars.png"
+				OnCommand = "%xero(function(self)
+					self:xy(-scx, 0)
+					self:z(-500)
+					self:zoomto(sw, sh)
+					self:rotationy(-60)
+					self:customtexturerect(0, 0, 1, 1)
+					self:texcoordvelocity(0.1, 0)
+				end)"
+			/>
+			<Layer
+				Type = "Sprite"
+				Name = "StarsRight"
+				Texture = "assets/stars.png"
+				OnCommand = "%xero(function(self)
+					self:xy(scx, 0)
+					self:z(-500)
+					self:zoomto(sw, sh)
+					self:rotationy(60)
+					self:customtexturerect(0, 0, 1, 1)
+					self:texcoordvelocity(-0.1, 0)
+				end)"
+			/>
+			<Layer
+				Type = "Sprite"
+				Name = "StarsUp"
+				Texture = "assets/stars.png"
+				OnCommand = "%xero(function(self)
+					self:xy(0, -scy)
+					self:z(-500)
+					self:zoomto(sw, sh)
+					self:rotationx(60)
+					self:customtexturerect(0, 0, 1, 1)
+					self:texcoordvelocity(0, 0.1)
+				end)"
+			/>
+			<Layer
+				Type = "Sprite"
+				Name = "StarsDown"
+				Texture = "assets/stars.png"
+				OnCommand = "%xero(function(self)
+					self:xy(0, scy)
+					self:z(-500)
+					self:zoomto(sw, sh)
+					self:rotationx(-60)
+					self:customtexturerect(0, 0, 1, 1)
+					self:texcoordvelocity(0, -0.1)
+				end)"
+			/>
+		</children>
+	</Layer>
 
 	<!-- ActorProxies -->
 	<Layer Type = "ActorProxy" Name = "PC[1]" />

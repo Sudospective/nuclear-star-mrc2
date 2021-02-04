@@ -1,4 +1,4 @@
--- weeeeeee
+-- weeeeeee warp stuff
 aux {'warpspeed', 'warprotation'}
 node {'warpspeed', 'warprotation',
     function(n, rot)
@@ -8,18 +8,24 @@ node {'warpspeed', 'warprotation',
         StarsDown:texcoordvelocity(-rot * 0.01, -n * 0.01)
     end
 }
+aux {'warpdilation'}
+node {'warpdilation',
+    function(n)
+        StarFrame:zoomz(n * 0.01)
+    end
+}
 
 -- intro funnies
 set
     {0, 1500, 'z', 800, 'zoomz', -20000, 'tinyz', 100, 'stealth', 100, 'dark', 0, 'xmod', 100, 'warpspeed', 10, 'warprotation'}
-    {16, -100, 'warpspeed'}
+    {16, -100, 'warpspeed', 1600, 'warpdilation'}
 ease
     {0, 16, linear, 100, 'zoomz', 0, 'tinyz'}
     {0, 16, linear, 0, 'dark'}
     {0, 16, outExpo, 0, 'z'}
     {0, 16, inCubic, 1.5, 'xmod'}
     {0, 16, inExpo, 0, 'stealth'}
-    {16, 2, outExpo, 10, 'warpspeed', 1, 'warprotation'}
+    {16, 2, outExpo, 10, 'warpspeed', 1, 'warprotation', 100, 'warpdilation'}
 
 func {0, function()
     AFTSprite:linear(0.1)
@@ -55,14 +61,16 @@ func {80, function()
 end, persist = false}
 
 func {136, function()
-    AFTSprite:diffusealpha(0.98 * nukestar_aftMult)
-    AFTSprite:accelerate(8 * spb)
+    AFTSprite:zoom(1.2)
+    AFTSprite:diffusealpha(0.9 * nukestar_aftMult)
+    AFTSprite:decelerate(8 * spb)
+    AFTSprite:zoom(1.005)
     AFTSprite:diffusealpha(0 * nukestar_aftMult)
 end, persist = false}
 
 ease
     {112, 24, inSine, 100, 'warpspeed', 100, 'warprotation'}
-    {128, 8, inExpo, 50, 'flip', 95, 'stealth', -2000, 'tiny', 2, 'xmod', 7500, 'longholds', -150, 'holdgirth', 200, 'zoomy'}
+    {128, 8, inExpo, 1600, 'warpdilation', 50, 'flip', 95, 'stealth', -2000, 'tiny', 2, 'xmod', 7500, 'longholds', -150, 'holdgirth', 200, 'zoomy'}
 func {136, function()
     for pn = 1, 2 do
         P[pn]:x(scx)
@@ -73,7 +81,7 @@ set
     {136, 100, 'stealth2', 100, 'stealth3', plr = 1}
     {136, 100, 'stealth0', 100, 'stealth1', plr = 2}
 ease
-    {136, 8, outQuad, 5, 'warpspeed', 0, 'warprotation'}
+    {136, 8, outQuad, 5, 'warpspeed', 0, 'warprotation', 100, 'warpdilation'}
     {136, 1.5, outExpo, 100, 'dark', 100, 'invert', -314.15, 'confusionzoffset'}
     {136, 1, outExpo, 0, 'holdgirth', 400, 'zoomz', 0, 'drunk', 0, 'tipsy', 0, 'flip', 0.15, 'xmod', 0, 'rotationx', -314.15 / 6, 'confusionxoffset', -10000, 'tinyz', 0, 'tiny', 0, 'longholds'}
     {136, 7, inOutQuad, 100, 'zoomz', 0.5, 'xmod', 0, 'rotationx', 0, 'confusionxoffset', 100, 'zoomy', 0, 'tinyz', 0, 'stealth', 0, 'confusionzoffset'}
@@ -106,9 +114,9 @@ end
 
 set {175, 0, 'dark', 100, 'dark0', 100, 'dark1', 100, 'dark2', 100, 'dark3'}
 ease
-    {175.5, 2, bell, 0, 'noteskewx', 0, 'noteskewy', 0, 'tinyx', 0, 'tinyy', 0, 'tinyz', 0, 'beat', 0, 'drunk', 0, 'tipsy', 0, 'wave', 0, 'tornado', 0, 'bumpy', 0, 'bumpyx'}
-    {176, 1, bounce, -400, 'tiny', 50, 'flip', 70, 'dark', 10, 'warpspeed', 1, 'warprotation'}
-    {177, 1, outExpo, -50, 'flip', -50, 'invert'}
+    {175.5, 2, bell, 0, 'noteskewx', 0, 'noteskewy', 0, 'tinyx', 0, 'tinyy', 0, 'tinyz', 0, 'beat', 0, 'drunk', 0, 'tipsy', 0, 'wave', 0, 'tornado', 0, 'bumpy', 0, 'bumpyx', -50, 'warpspeed', -1, 'warprotation'}
+    {176, 1, bounce, -400, 'tiny', 25, 'flip', 70, 'dark', 25, 'warpdilation'}
+    {177, 1, outExpo, -50, 'flip', -50, 'invert', 75, 'warpspeed', -35, 'warprotation'}
     {176, 1, inBack, -25, 'cross', 100, 'movey1', 100, 'movey2', 1.75, 'xmod'}
     {177, 1, outSine, 0, 'dark1', 0, 'dark2', plr = 1}
 swap
@@ -257,12 +265,12 @@ for beat = 256, 266, 2 do
 end
 add
     {256, 4, inQuad, 300, 'wave'}
-    {256, 12, inQuad, 15, 'rotationz', 360 * 8, 'rotationy', -(314.15 * 16), 'confusionyoffset', -100, 'flip', -500, 'tiny', 210, 'tinyy'}
-    {256, 12, inExpo, 1000, 'warpspeed', 200, 'warprotation'}
+    {256, 12, inQuad, 15, 'rotationz', 360 * 8, 'rotationy', -(314.15 * 16), 'confusionyoffset', -100, 'flip', -500, 'tiny', 210, 'tinyy', 1500, 'warprotation'}
+    {256, 12, inExpo, 1000, 'warpspeed', 3200, 'warpdilation'}
     {260, 8, inExpo, -5000, 'tinyz', 50, 'reverse'}
     {264, 4, inQuad, 0, 'zoomy'}
-set {268, 100, 'zoomy', 0, 'wave', 0, 'rotationz', 0, 'rotationy', 0, 'tinyy', 0, 'tinyz', 0, 'reverse', 2000, 'z', -1000, 'warpspeed'}
-ease {268, 4, outExpo, 0, 'tiny', 0, 'z', 0, 'flip', 5, 'warpspeed', 1, 'warprotation'}
+set {268, 90, 'rotationx', 2400, 'parabolaz', 6400, 'zoomz', 100, 'zoomy', 0, 'wave', 0, 'rotationz', 0, 'rotationy', 0, 'tinyy', 0, 'tinyz', 0, 'reverse', 200, 'z', -1000, 'warpspeed', 200, 'warprotation', 3200, 'warpdilation'}
+ease {268, 4, outExpo, 0, 'rotationx', 0, 'parabolaz', 100, 'zoomz', 0, 'tiny', 0, 'z', 0, 'flip', 5, 'warpspeed', 1, 'warprotation', 100, 'warpdilation'}
 
 -- i am not floating again in space
 func {272, function()
@@ -274,12 +282,10 @@ func {272, function()
 end, persist = false}
 
 ease
-    {271, 2, inOutExpo, 10, 'warpspeed', -100, 'warprotation', 0.45, 'xmod', 100, 'drunk', 25, 'drunkperiod', 100, 'drunkz', 25, 'tipsyperiod', -100, 'attenuatex', -100, 'attenuatez', 100, 'tornado', 400, 'tornadoperiod', 100, 'tornadoz', 800, 'tornadozperiod', 100, 'dark', -75, 'flip', -25, 'targetx1', 25, 'targetx4', 25, 'targetz2', -25, 'targetz3', 200, 'wave', -70, 'reverse', 100, 'dark', 1300, 'z', 314.15 * 2, 'confusionzoffset', 800, 'zoomz', -90, 'rotationx', 314.15 / 2, 'confusionxoffset'}
+    {271, 2, inOutExpo, 5, 'warpspeed', -5, 'warprotation', 15, 'warpdilation', 0.45, 'xmod', 100, 'drunk', 25, 'drunkperiod', 100, 'drunkz', 25, 'tipsyperiod', -100, 'attenuatex', -100, 'attenuatez', 100, 'tornado', 400, 'tornadoperiod', 100, 'tornadoz', 800, 'tornadozperiod', 100, 'dark', -75, 'flip', -25, 'targetx1', 25, 'targetx4', 25, 'targetz2', -25, 'targetz3', 200, 'wave', -70, 'reverse', 100, 'dark', 1300, 'z', 314.15 * 2, 'confusionzoffset', 800, 'zoomz', -90, 'rotationx', 314.15 / 2, 'confusionxoffset'}
     {270, 4, spike, 100, 'warpspeed'}
-
--- reset being bad boy
---reset {332, 4, inOutQuad, exclude = {'movex', 'x', 'movey', 'y', 'offset', 'amt', 'eccentricityx', 'eccentricityz'}}
-ease {332, 4, inOutQuad, 20, 'warpspeed', -10, 'warprotation', 1.5, 'xmod', 0, 'drunk', 0, 'drunkperiod', 0, 'drunkz', 0, 'tipsyperiod', 0, 'attenuatex', 0, 'attenuatez', 0, 'tornado', 0, 'tornadoperiod', 0, 'tornadoz', 0, 'tornadozperiod', 0, 'dark', 0, 'flip', 0, 'targetx1', 0, 'targetx4', 0, 'targetz2', 0, 'targetz3', 0, 'wave', 0, 'reverse', 0, 'z', 0, 'confusionzoffset', 100, 'zoomz', 0, 'rotationx', 0, 'confusionxoffset'}
+    {332, 4, inOutQuad, 25, 'warpspeed', -10, 'warprotation', 1.5, 'xmod', 0, 'drunk', 0, 'drunkperiod', 0, 'drunkz', 0, 'tipsyperiod', 0, 'attenuatex', 0, 'attenuatez', 0, 'tornado', 0, 'tornadoperiod', 0, 'tornadoz', 0, 'tornadozperiod', 0, 'dark', 0, 'flip', 0, 'targetx1', 0, 'targetx4', 0, 'targetz2', 0, 'targetz3', 0, 'wave', 0, 'reverse', 0, 'z', 0, 'confusionzoffset', 100, 'zoomz', 0, 'rotationx', 0, 'confusionxoffset'}
+    {328, 16, inOutQuad, 100, 'warpdilation'}
 mirror {332, 4, inExpo, 30, 'drunk', 30, 'tipsy'}
 -- it may be a halo but this is definitely not holy
 func {392, function()
