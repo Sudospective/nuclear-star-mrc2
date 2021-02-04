@@ -60,7 +60,7 @@
 	sprite(AFTSprite)
 	aftsprite(AFT, AFTSprite)
 
-	-- Ad-Lib Variables
+	-- Variables
 	nukestar_basescore = {}
 	nukestar_adlibscore = {}
 	nukestar_adlibbeats = {
@@ -185,6 +185,7 @@ StepP2RightPressMessageCommand = "%xero(function(self)
 end)"
 ><children>
 
+	<!-- BG Elements -->
 	<Layer
 		Type = "Quad"
 		Name = "HideEvent"
@@ -194,7 +195,60 @@ end)"
 			self:diffuse(0, 0, 0, 1)
 		end)"
 	/>
+	<Layer
+		Type = "Sprite"
+		Name = "StarsLeft"
+		Texture = "assets/stars.png"
+		OnCommand = "%xero(function(self)
+			self:xy(0, scy)
+			self:z(-500)
+			self:zoomto(sw, sh)
+			self:rotationy(-60)
+			self:customtexturerect(0, 0, 1, 1)
+			self:texcoordvelocity(0.1, 0)
+		end)"
+	/>
+	<Layer
+		Type = "Sprite"
+		Name = "StarsRight"
+		Texture = "assets/stars.png"
+		OnCommand = "%xero(function(self)
+			self:xy(sw, scy)
+			self:z(-500)
+			self:zoomto(sw, sh)
+			self:rotationy(60)
+			self:customtexturerect(0, 0, 1, 1)
+			self:texcoordvelocity(-0.1, 0)
+		end)"
+	/>
+	<Layer
+		Type = "Sprite"
+		Name = "StarsUp"
+		Texture = "assets/stars.png"
+		OnCommand = "%xero(function(self)
+			self:xy(scx, 0)
+			self:z(-500)
+			self:zoomto(sw, sh)
+			self:rotationx(60)
+			self:customtexturerect(0, 0, 1, 1)
+			self:texcoordvelocity(0, 0.1)
+		end)"
+	/>
+	<Layer
+		Type = "Sprite"
+		Name = "StarsDown"
+		Texture = "assets/stars.png"
+		OnCommand = "%xero(function(self)
+			self:xy(scx, sh)
+			self:z(-500)
+			self:zoomto(sw, sh)
+			self:rotationx(-60)
+			self:customtexturerect(0, 0, 1, 1)
+			self:texcoordvelocity(0, -0.1)
+		end)"
+	/>
 
+	<!-- ActorProxies -->
 	<Layer Type = "ActorProxy" Name = "PC[1]" />
 	<Layer Type = "ActorProxy" Name = "PC[2]" />
 	<Layer Type = "ActorProxy" Name = "PJ[1]" />
@@ -202,6 +256,9 @@ end)"
 	<Layer Type = "ActorProxy" Name = "PP[1]" />
 	<Layer Type = "ActorProxy" Name = "PP[2]" />
 
+	<!-- FG Elements -->
+	<Layer Type = "Sprite" Name = "AFTSprite" />
+	<Layer Type = "ActorFrameTexture" Name = "AFT" />
 	<Layer
 		Type = "BitmapText"
 		Name = "ImagineText"
@@ -213,7 +270,5 @@ end)"
 			self:hidden(1)
 		end)"
 	/>
-	<Layer Type = "Sprite" Name = "AFTSprite" />
-	<Layer Type = "ActorFrameTexture" Name = "AFT" />
 
 </children></Mods>

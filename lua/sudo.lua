@@ -1,11 +1,25 @@
+-- weeeeeee
+aux {'warpspeed', 'warprotation'}
+node {'warpspeed', 'warprotation',
+    function(n, rot)
+        StarsLeft:texcoordvelocity(n * 0.01, -rot * 0.01)
+        StarsRight:texcoordvelocity(-n * 0.01, rot * 0.01)
+        StarsUp:texcoordvelocity(rot * 0.01, n * 0.01)
+        StarsDown:texcoordvelocity(-rot * 0.01, -n * 0.01)
+    end
+}
+
 -- intro funnies
-set {0, 1500, 'z', 800, 'zoomz', -20000, 'tinyz', 100, 'stealth', 100, 'dark', 0, 'xmod', }
+set
+    {0, 1500, 'z', 800, 'zoomz', -20000, 'tinyz', 100, 'stealth', 100, 'dark', 0, 'xmod', 100, 'warpspeed', 10, 'warprotation'}
+    {16, -100, 'warpspeed'}
 ease
     {0, 16, linear, 100, 'zoomz', 0, 'tinyz'}
     {0, 16, linear, 0, 'dark'}
     {0, 16, outExpo, 0, 'z'}
     {0, 16, inCubic, 1.5, 'xmod'}
     {0, 16, inExpo, 0, 'stealth'}
+    {16, 2, outExpo, 10, 'warpspeed', 1, 'warprotation'}
 
 func {0, function()
     AFTSprite:linear(0.1)
@@ -17,11 +31,12 @@ func {12, function()
 end, persist = false}
 func {16, function()
     AFTSprite:zoom(1.2)
-    AFTSprite:decelerate(2 * spb)
+    AFTSprite:decelerate(4 * spb)
     AFTSprite:zoom(1.005)
     AFTSprite:diffusealpha(0.85 * nukestar_aftMult)
 end, persist = false}
 
+-- its time to fucikgn S P E E D
 func {76, function()
     AFTSprite:zoom(1.05)
     AFTSprite:diffusealpha(0.9 * nukestar_aftMult)
@@ -46,24 +61,26 @@ func {136, function()
 end, persist = false}
 
 ease
-{128, 8, inExpo, 50, 'flip', 95, 'stealth', -1000, 'tiny', 2, 'xmod', 7500, 'longholds', 200, 'zoomy'}
+    {112, 24, inSine, 100, 'warpspeed', 100, 'warprotation'}
+    {128, 8, inExpo, 50, 'flip', 95, 'stealth', -2000, 'tiny', 2, 'xmod', 7500, 'longholds', -150, 'holdgirth', 200, 'zoomy'}
 func {136, function()
     for pn = 1, 2 do
         P[pn]:x(scx)
     end
 end}
 set
-    {136, 0, 'xmod', 100, 'dizzyholds', 100, 'holdstealth'}
+    {136, 0, 'xmod', 100, 'dizzyholds', 100, 'holdstealth', -100, 'warpspeed'}
     {136, 100, 'stealth2', 100, 'stealth3', plr = 1}
     {136, 100, 'stealth0', 100, 'stealth1', plr = 2}
 ease
+    {136, 8, outQuad, 5, 'warpspeed', 0, 'warprotation'}
     {136, 1.5, outExpo, 100, 'dark', 100, 'invert', -314.15, 'confusionzoffset'}
-    {136, 1, outExpo, 0, 'drunk', 0, 'tipsy', 0, 'flip', 0.15, 'xmod', 0, 'rotationx', -314.15 / 4, 'confusionxoffset', -10000, 'tinyz', 0, 'tiny', 0, 'longholds'}
-    {136, 7, inOutQuad, 0.5, 'xmod', 0, 'rotationx', 0, 'confusionxoffset', 100, 'zoomy', 0, 'tinyz', 0, 'stealth', 0, 'confusionzoffset'}
+    {136, 1, outExpo, 0, 'holdgirth', 400, 'zoomz', 0, 'drunk', 0, 'tipsy', 0, 'flip', 0.15, 'xmod', 0, 'rotationx', -314.15 / 6, 'confusionxoffset', -10000, 'tinyz', 0, 'tiny', 0, 'longholds'}
+    {136, 7, inOutQuad, 100, 'zoomz', 0.5, 'xmod', 0, 'rotationx', 0, 'confusionxoffset', 100, 'zoomy', 0, 'tinyz', 0, 'stealth', 0, 'confusionzoffset'}
     {142, 2, spike, 50, 'stealth'}
     {142.5, 1, inOutExpo, 0, 'stealth2', 0, 'stealth3', plr = 1}
     {142.5, 1, inOutExpo, 0, 'stealth0', 0, 'stealth1', plr = 2}
-    {142, 2, inExpo, 1.5, 'xmod', 100, 'wave', 15, 'tornado', -150, 'holdgirth', 200, 'bumpyperiod', 100, 'bumpyxperiod', 100, 'bumpyxoffset', 50, 'drunk', 50, 'tipsy'}
+    {142, 2, inExpo, 1.5, 'xmod', 100, 'wave', 15, 'tornado', -150, 'holdgirth', 200, 'bumpyperiod', 100, 'bumpyxperiod', 100, 'bumpyxoffset', 50, 'drunk', 50, 'tipsy', 50, 'warpspeed', 25, 'warprotation'}
     {143, 1, inOutExpo, 100, 'dark', 50, 'beat',  0, 'holdstealth'}
     {142.5, 1, outBack, 0, 'invert'}
 mirror
@@ -90,7 +107,7 @@ end
 set {175, 0, 'dark', 100, 'dark0', 100, 'dark1', 100, 'dark2', 100, 'dark3'}
 ease
     {175.5, 2, bell, 0, 'noteskewx', 0, 'noteskewy', 0, 'tinyx', 0, 'tinyy', 0, 'tinyz', 0, 'beat', 0, 'drunk', 0, 'tipsy', 0, 'wave', 0, 'tornado', 0, 'bumpy', 0, 'bumpyx'}
-    {176, 1, bounce, 20, 'flip', 70, 'dark'}
+    {176, 1, bounce, -400, 'tiny', 50, 'flip', 70, 'dark', 10, 'warpspeed', 1, 'warprotation'}
     {177, 1, outExpo, -50, 'flip', -50, 'invert'}
     {176, 1, inBack, -25, 'cross', 100, 'movey1', 100, 'movey2', 1.75, 'xmod'}
     {177, 1, outSine, 0, 'dark1', 0, 'dark2', plr = 1}
@@ -241,10 +258,11 @@ end
 add
     {256, 4, inQuad, 300, 'wave'}
     {256, 12, inQuad, 15, 'rotationz', 360 * 8, 'rotationy', -(314.15 * 16), 'confusionyoffset', -100, 'flip', -500, 'tiny', 210, 'tinyy'}
+    {256, 12, inExpo, 1000, 'warpspeed', 200, 'warprotation'}
     {260, 8, inExpo, -5000, 'tinyz', 50, 'reverse'}
     {264, 4, inQuad, 0, 'zoomy'}
-set {268, 100, 'zoomy', 0, 'wave', 0, 'rotationz', 0, 'rotationy', 0, 'tinyy', 0, 'tinyz', 0, 'reverse', 2000, 'z'}
-ease {268, 4, outExpo, 0, 'tiny', 0, 'z', 0, 'flip'}
+set {268, 100, 'zoomy', 0, 'wave', 0, 'rotationz', 0, 'rotationy', 0, 'tinyy', 0, 'tinyz', 0, 'reverse', 2000, 'z', -1000, 'warpspeed'}
+ease {268, 4, outExpo, 0, 'tiny', 0, 'z', 0, 'flip', 5, 'warpspeed', 1, 'warprotation'}
 
 -- i am not floating again in space
 func {272, function()
@@ -255,10 +273,13 @@ func {272, function()
     AFTSprite:diffusealpha(0.85 * nukestar_aftMult)
 end, persist = false}
 
-ease {271, 2, inOutExpo, 0.45, 'xmod', 100, 'drunk', 25, 'drunkperiod', 100, 'drunkz', 25, 'tipsyperiod', -100, 'attenuatex', -100, 'attenuatez', 100, 'tornado', 400, 'tornadoperiod', 100, 'tornadoz', 800, 'tornadozperiod', 100, 'dark', -75, 'flip', -25, 'targetx1', 25, 'targetx4', 25, 'targetz2', -25, 'targetz3', 200, 'wave', -70, 'reverse', 100, 'dark', 1300, 'z', 314.15 * 2, 'confusionzoffset', 800, 'zoomz', -90, 'rotationx', 314.15 / 2, 'confusionxoffset'}
+ease
+    {271, 2, inOutExpo, 10, 'warpspeed', -100, 'warprotation', 0.45, 'xmod', 100, 'drunk', 25, 'drunkperiod', 100, 'drunkz', 25, 'tipsyperiod', -100, 'attenuatex', -100, 'attenuatez', 100, 'tornado', 400, 'tornadoperiod', 100, 'tornadoz', 800, 'tornadozperiod', 100, 'dark', -75, 'flip', -25, 'targetx1', 25, 'targetx4', 25, 'targetz2', -25, 'targetz3', 200, 'wave', -70, 'reverse', 100, 'dark', 1300, 'z', 314.15 * 2, 'confusionzoffset', 800, 'zoomz', -90, 'rotationx', 314.15 / 2, 'confusionxoffset'}
+    {270, 4, spike, 100, 'warpspeed'}
+
 -- reset being bad boy
 --reset {332, 4, inOutQuad, exclude = {'movex', 'x', 'movey', 'y', 'offset', 'amt', 'eccentricityx', 'eccentricityz'}}
-ease {332, 4, inOutQuad, 1.5, 'xmod', 0, 'drunk', 0, 'drunkperiod', 0, 'drunkz', 0, 'tipsyperiod', 0, 'attenuatex', 0, 'attenuatez', 0, 'tornado', 0, 'tornadoperiod', 0, 'tornadoz', 0, 'tornadozperiod', 0, 'dark', 0, 'flip', 0, 'targetx1', 0, 'targetx4', 0, 'targetz2', 0, 'targetz3', 0, 'wave', 0, 'reverse', 0, 'z', 0, 'confusionzoffset', 100, 'zoomz', 0, 'rotationx', 0, 'confusionxoffset'}
+ease {332, 4, inOutQuad, 20, 'warpspeed', -10, 'warprotation', 1.5, 'xmod', 0, 'drunk', 0, 'drunkperiod', 0, 'drunkz', 0, 'tipsyperiod', 0, 'attenuatex', 0, 'attenuatez', 0, 'tornado', 0, 'tornadoperiod', 0, 'tornadoz', 0, 'tornadozperiod', 0, 'dark', 0, 'flip', 0, 'targetx1', 0, 'targetx4', 0, 'targetz2', 0, 'targetz3', 0, 'wave', 0, 'reverse', 0, 'z', 0, 'confusionzoffset', 100, 'zoomz', 0, 'rotationx', 0, 'confusionxoffset'}
 mirror {332, 4, inExpo, 30, 'drunk', 30, 'tipsy'}
 -- it may be a halo but this is definitely not holy
 func {392, function()
@@ -301,8 +322,7 @@ func {460, function()
     ImagineText:decelerate(spb)
     ImagineText:z(0)
     ImagineText:sleep(2 * spb)
-    ImagineText:decelerate(spb)
-    ImagineText:diffusealpha(0)
+    ImagineText:hidden(1)
 end, persist = false}
 func {464, function()
     AFTSprite:zoom(1.1)
