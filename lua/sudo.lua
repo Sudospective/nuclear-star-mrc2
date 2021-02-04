@@ -294,6 +294,7 @@ for beat = 432, 446, 4 do
 end
 
 func {460, function()
+    Trace( 'Ad-lib section beginning at beat', tostring(GAMESTATE:GetSongBeat() + 4) )
     ImagineText:hidden(0)
     ImagineText:decelerate(spb)
     ImagineText:z(10)
@@ -302,16 +303,54 @@ func {460, function()
     ImagineText:sleep(2 * spb)
     ImagineText:decelerate(spb)
     ImagineText:diffusealpha(0)
-    
-end}
+end, persist = false}
 
 set {460, 50, 'flip', 50, 'reverse'}
-set {468, 30, 'targetx1', 0, 'targetx4', 0, 'targety2', 0, 'targety3', 0, 'rotationz', 0, 'xmod'}
+set {468, 0, 'targetx1', 0, 'targetx4', 0, 'targety2', 0, 'targety3', 0, 'rotationz', 0, 'xmod'}
 ease
     {458, 2, inExpo, 400, 'z', 1000, 'zoomz', 60, 'rotationx', 1000, 'parabolaz'}
-    {464, 2, tap, 500, 'z', 1000, 'zoomz'}
     {460, 3, outExpo, 0, 'z', 100, 'zoomz', 75, 'tiny', 50, 'reverse', -50, 'targetx1', 50, 'targetx4', 50, 'targety2', -50, 'targety3', 0, 'rotationx', 0, 'parabolaz', 360, 'rotationz'}
     {464, 1, outQuart, 100, 'stealth', 100, 'dark'}
+    {464, 1.5, tap, 50, 'z', 1000, 'zoomz'}
     {468, 26, linear, 800, 'zoomz', -20000, 'tinyz'}
     {468, 26, inExpo, 1500, 'z', 50, 'stealth'}
     {494, 0.25, outExpo, 100, 'stealth'}
+
+-- Ad-lib stuff
+function checkadlib(pn, col, beat)
+    local PStats = STATSMAN:GetCurStageStats():GetPlayerStageStats(pn - 1)
+    P[pn]:FakeStep(col)
+    if GAMESTATE:GetSongBeat() >= 463.75 then
+        for _, curadlib in ipairs(adlibbeats) do    
+            if (curadlib + 464) + 0.125 >= beat then
+                Trace(tostring(curadlib))
+                --local offset = beat - ( math.floor(GAMESTATE:GetSongBeat() * 8) / 8 )
+                local offset = beat - (curadlib + 464)
+                if offset < 0.125 and offset > -0.125 then
+                    local flashcolor = 5
+                    local addscore = 2
+                    if offset < 0.075 and offset > -0.075 then
+                        flashcolor = 1
+                        addscore = 5
+                    end
+                    P[pn]:DidTapNote(col, flashcolor, false)
+                    adlibscore[pn] = adlibscore[pn] + addscore
+                end
+            end
+        end
+    end
+end
+func {494, function()
+    for pn = 1, 2 do
+        local stats = STATSMAN:GetCurStageStats():GetPlayerStageStats(pn - 1)
+        basescore[pn] = stats:GetActualDancePoints()
+        Trace( 'Player '..tostring(pn))
+        Trace( '----------------------------')
+        Trace( 'Base DP: '..tostring(basescore[pn]) )
+        Trace( 'Ad-lib DP: '..tostring(adlibscore[pn]))
+        Trace( 'Total DP: '..tostring(basescore[pn] + adlibscore[pn]))
+        stats:SetScore(basescore[pn] + adlibscore[pn])
+        stats:SetActualDancePoints(basescore[pn] + adlibscore[pn])
+        Trace( 'Final Grade: '..tostring(math.floor(stats:GetPercentDancePoints() * 10000) / 100))
+    end
+end}
