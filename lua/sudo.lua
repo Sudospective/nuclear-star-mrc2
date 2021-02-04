@@ -316,7 +316,7 @@ func {492, function()
     AFTSprite:diffusealpha(0 * nukestar_aftMult)
 end, persist = false}
 
-set {460, 50, 'flip', 50, 'reverse'}
+set {460, 50, 'flip', 50, 'reverse', 100, 'disablemines'}
 set {465, 0, 'targetx1', 0, 'targetx4', 0, 'targety2', 0, 'targety3', 0, 'rotationz', 0, 'xmod'}
 ease
     {458, 2, inExpo, 400, 'z', 1000, 'zoomz', 60, 'rotationx', 1000, 'parabolaz'}
