@@ -99,7 +99,7 @@ end,
 --amt is the size of the circle
 --offset is the rotation offset, in pi radians / 4 (4 offset should be 1 rotation)
 --eccentricity is how much of an oval it is, 100 is circular, anything else is an oval
-setdefault{90,'eccentricityx',320,'eccentricityz'} 
+setdefault{90,'eccentricityx',320,'eccentricityz'}
     
 set {0, scx, 'xpos',1000,'tipsy',3000,'drunk',720,'rotationz',-1256,'confusionoffset', plr = 1}
 set {0, scx, 'xpos',-1000,'tipsy',-3000,'drunk',-720,'rotationz',1256,'confusionoffset', plr = 2}

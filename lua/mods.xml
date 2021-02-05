@@ -60,7 +60,7 @@
 	sprite(AFTSprite)
 	aftsprite(AFT, AFTSprite)
 
-	-- Variables
+	-- Variables and Functions
 	rand.seed(404)
 	nukestar_basescore = {}
 	nukestar_adlibscore = {}
@@ -77,21 +77,41 @@
 		nukestar_basescore[pn] = 0
     	nukestar_adlibscore[pn] = 0
 	end
+	function nukestar_adlib(pn, col, beat)
+		local PStats = STATSMAN:GetCurStageStats():GetPlayerStageStats(pn - 1)
+		P[pn]:FakeStep(col)
+		if GAMESTATE:GetSongBeat() >= 463.75 then
+			for _, curadlib in ipairs(nukestar_adlibbeats) do    
+				if (curadlib + 464) + 0.125 >= beat then
+					Trace(tostring(curadlib))
+					local offset = beat - (curadlib + 464)
+					if offset < 0.125 and offset > -0.125 then
+						local flashcolor = 5
+						local addscore = 1
+						if offset < 0.075 and offset > -0.075 then
+							flashcolor = 1
+							addscore = 2.5
+						end
+						P[pn]:DidTapNote(col, flashcolor, false)
+						nukestar_adlibscore[pn] = nukestar_adlibscore[pn] + addscore
+						if GAMESTATE:GetSongBeat() > 465 and GAMESTATE:GetSongBeat() < 491.75 then
+							P[pn]:xy(rand.float(sw * 0.25, sw * 0.75), rand.float(sh * 0.25, sh * 0.75))
+						end
+					end
+				end
+			end
+		end
+	end
 
 	-- Aux and Node Setup
-	aux {'warpspeed', 'warprotation'}
-	node {'warpspeed', 'warprotation',
-		function(n, rot)
+	aux {'warpspeed', 'warprotation', 'warpdilation'}
+	node {'warpspeed', 'warprotation', 'warpdilation',
+		function(n, rot, dil)
 			StarsLeft:texcoordvelocity(n * 0.01, -rot * 0.01)
 			StarsRight:texcoordvelocity(-n * 0.01, rot * 0.01)
 			StarsUp:texcoordvelocity(rot * 0.01, n * 0.01)
 			StarsDown:texcoordvelocity(-rot * 0.01, -n * 0.01)
-		end
-	}
-	aux {'warpdilation'}
-	node {'warpdilation',
-		function(n)
-			StarFrame:zoomz(n * 0.01)
+			StarFrame:zoomz(dil * 0.01)
 		end
 	}
 	
@@ -110,32 +130,6 @@
     	end
     	lastFrameTime = GAMESTATE:GetSongTime()
 	end}
-	
-	function nukestar_adlib(pn, col, beat)
-		local PStats = STATSMAN:GetCurStageStats():GetPlayerStageStats(pn - 1)
-		P[pn]:FakeStep(col)
-		if GAMESTATE:GetSongBeat() >= 463.75 then
-			for _, curadlib in ipairs(nukestar_adlibbeats) do    
-				if (curadlib + 464) + 0.125 >= beat then
-					Trace(tostring(curadlib))
-					local offset = beat - (curadlib + 464)
-					if offset < 0.125 and offset > -0.125 then
-						local flashcolor = 5
-						local addscore = 2
-						if offset < 0.075 and offset > -0.075 then
-							flashcolor = 1
-							addscore = 5
-						end
-						P[pn]:DidTapNote(col, flashcolor, false)
-						nukestar_adlibscore[pn] = nukestar_adlibscore[pn] + addscore
-						if GAMESTATE:GetSongBeat() > 465 and GAMESTATE:GetSongBeat() < 491.75 then
-							P[pn]:xy(rand.float(sw * 0.25, sw * 0.75), rand.float(sh * 0.25, sh * 0.75))
-						end
-					end
-				end
-			end
-		end
-	end
 		
 	-- Collaborator Mods
 	if sanity ~= nil then
@@ -160,6 +154,20 @@
 			Trace( 'Final Grade: '..tostring(math.floor(stats:GetPercentDancePoints() * 10000) / 100))
 		end
 	end}
+
+	-- Spellcards
+	if FUCK_EXE then
+		card {0, 111.75, 'can this PLEASE be a normal field trip', 2, {0.2, 0.4, 0.9}}
+		card {112, 136, 'with the FRIZZ???', 5, {0.6, 0.2, 0.7}}
+		card {144, 191.75, 'no way', 8, {1, 0, 0.5}}
+		card {192, 207.75, 'sudo finally did a driven drop', 9, {0.5, 1, 0.5}}
+		card {208, 255.75, 'i ate some wubby bagels and now im wubby', 11, {1, 1, 1}}		-- Needs color
+		card {256, 268, 'ease {256, 12, inQuad, 100, \'blackhole\'}', 8, {0.3, 0.3, 0.3}}
+		card {272, 335.75, 'dont forget to thank the bus driver', 6, {1, 1, 1}}				-- Needs color
+		card {400, 431.75, 'D E A T J', 11, {1, 1, 1}}										-- Needs color
+		card {432, 459.75, 'it may be a halo but this is definitely not holy', 12, {0.7, 0.2, 0.2}}
+		card {460, 493.75, 'but where do i step', 2, {0, 1, 0.2}}
+	end
 
 end)"
 Type = "ActorFrame"
