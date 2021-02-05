@@ -336,6 +336,14 @@ func {492, function()
 end, persist = false}
 func {494, function()
     StarFrame:hidden(1)
+    ImagineScore1:hidden(0)
+    ImagineScore1:sleep(4 * spb)
+    ImagineScore1:decelerate(4 * spb)
+    ImagineScore1:diffusealpha(0)
+    ImagineScore2:hidden(0)
+    ImagineScore2:sleep(4 * spb)
+    ImagineScore2:decelerate(4 * spb)
+    ImagineScore2:diffusealpha(0)
 end, persist = false}
 
 set

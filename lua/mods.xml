@@ -64,6 +64,7 @@
 	rand.seed(404)
 	nukestar_basescore = {}
 	nukestar_adlibscore = {}
+	nukestar_possiblescore = {}
 	nukestar_adlibbeats = {
 		0, 1.5, 3.5, 3.75,
 		4, 5.5, 7.5, 7.75,
@@ -76,6 +77,7 @@
     for pn = 1, 2 do
 		nukestar_basescore[pn] = 0
     	nukestar_adlibscore[pn] = 0
+		nukestar_possiblescore[pn] = 0
 	end
 	function nukestar_adlib(pn, col, beat)
 		local PStats = STATSMAN:GetCurStageStats():GetPlayerStageStats(pn - 1)
@@ -143,12 +145,18 @@
 	func {494, function()
 		for pn = 1, 2 do
 			local stats = STATSMAN:GetCurStageStats():GetPlayerStageStats(pn - 1)
+			nukestar_possiblescore[pn] = stats:GetPossibleDancePoints()
 			nukestar_basescore[pn] = stats:GetActualDancePoints()
 			Trace( 'Player '..tostring(pn))
 			Trace( '----------------------------')
 			Trace( 'Base DP: '..tostring(nukestar_basescore[pn]) )
 			Trace( 'Ad-lib DP: '..tostring(nukestar_adlibscore[pn]))
 			Trace( 'Total DP: '..tostring(nukestar_basescore[pn] + nukestar_adlibscore[pn]))
+			if pn == 1 then
+				ImagineScore1:settext( '+'..tostring( math.floor( (nukestar_adlibscore[pn] / nukestar_basescore[pn]) * 10000 ) / 100 ) )
+			else
+				ImagineScore2:settext( '+'..tostring( math.floor( (nukestar_adlibscore[pn] / nukestar_basescore[pn]) * 10000 ) / 100 ) )
+			end
 			stats:SetScore(nukestar_basescore[pn] + nukestar_adlibscore[pn])
 			stats:SetActualDancePoints(nukestar_basescore[pn] + nukestar_adlibscore[pn])
 			Trace( 'Final Grade: '..tostring(math.floor(stats:GetPercentDancePoints() * 10000) / 100))
@@ -305,6 +313,30 @@ end)"
 			self:xy(scx, scy * 0.5)
 			self:z(100)
 			self:settext('Just use your imagination.')
+			self:hidden(1)
+		end)"
+	/>
+	<Layer
+		Type = "BitmapText"
+		Name = "ImagineScore1"
+		Font = "_eurostile"
+		OnCommand = "%xero(function(self)
+			self:xy(sw * 0.25, scy)
+			self:z(-50)
+			self:diffuse(1, 0.5, 0.5, 1)
+			self:settext('+0.00%')
+			self:hidden(1)
+		end)"
+	/>
+	<Layer
+		Type = "BitmapText"
+		Name = "ImagineScore2"
+		Font = "_eurostile"
+		OnCommand = "%xero(function(self)
+			self:xy(sw * 0.75, scy)
+			self:z(-50)
+			self:diffuse(0.5, 0.5, 1, 1)
+			self:settext('+0.00%')
 			self:hidden(1)
 		end)"
 	/>
