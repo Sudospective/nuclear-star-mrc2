@@ -6,32 +6,25 @@
 #ARTISTTRANSLIT:;
 #GENRE:;
 #CREDIT:;
+#MUSIC:nuclearstar.ogg;
 #BANNER:;
 #BACKGROUND:;
-#LYRICSPATH:;
 #CDTITLE:;
-#MUSIC:nuclearstar.ogg;
-#OFFSET:0.023;
-#SAMPLESTART:30.149;
-#SAMPLELENGTH:12.000;
+#SAMPLESTART:120.580;
+#SAMPLELENGTH:9.648;
 #SELECTABLE:YES;
+#OFFSET:0.023;
 #BPMS:0.000=199.000;
 #STOPS:;
 #BGCHANGES:;
-
-//The majority of simfile scripts and visual effects are stored here.
-#FGCHANGES:0.000=template/main.xml=1.000=0=0=1=====,
-;
-
-#KEYSOUNDS:;
-
-//---------------dance-single - mrcool909090 + Sudospective----------------
+#FGCHANGES:0.000=template/main.xml=1.000=0=0=1;
+//--------------- dance-single - mrcool909090 + Sudospective ----------------
 #NOTES:
      dance-single:
      mrcool909090 + Sudospective:
      Challenge:
-     1:
-     0.604,0.757,0.014,0.361,0.137:
+     11:
+     0.562,0.705,0.013,0.336,0.128:
 0000
 0000
 0000
@@ -1228,4 +1221,3 @@
 0M00
 0000
 ;
-
