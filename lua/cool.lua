@@ -313,8 +313,8 @@ for i = 60,76 do
    -- ease{i+0.25,2,inOutSine,0,'mini'}
     kickykicks = kickykicks + 20
 end
-ease{76,4,inSine,0,'beat'}
-mirror{76,4,inSine,60,'tipsy',50,'drunk'}
+ease{76,1,outCubic,0,'beat'}
+mirror{76,4,inOutSine,70,'tipsy',70,'drunk'}
 
 ease{112,24,inQuad,360*8,'rotationy',-628*8,'confusionyoffset'}
 set{136,0,'rotationy',0,'confusionyoffset'}
@@ -387,6 +387,9 @@ for i = 249,250.5,0.5 do
 end
 ease{251,1,outExpo,0,'amt',0,'flip',0,'offset'}
 
+ease{254,0.5,outExpo,100,'reverse',-50,'flip'}
+set{254.5,-628,'confusionyoffset',360,'rotationy'}
+ease{254.5,1.5,outCubic,0,'reverse',0,'flip',0,'confusionyoffset',0,'rotationy'}
 
 --second half--
 
@@ -453,3 +456,13 @@ end
 ease{456,4,inExpo,offset_speen+20,'offset'}
 
 ease{460,4,instant,0,'amt'}
+
+
+
+--background bs--
+ease{368,24,inCubic,200,'warpspeed'}
+ease{392,8,outCubic,0,'warpspeed'}
+for i = 400,447 do
+	ease{i,0.25,outExpo,70,'warpspeed'}
+	ease{i+0.25,0.75,outExpo,30,'warpspeed'}
+end
