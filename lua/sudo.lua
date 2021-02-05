@@ -348,6 +348,6 @@ ease
     {464, 1.5, tap, 50, 'z', 1000, 'zoomz'}
     {468, 26, linear, 800, 'zoomz', -20000, 'tinyz'}
     {468, 26, inExpo, 1500, 'z', 100, 'stealth'}
-    {490, 4, inExpo, 100, 'warpspeed', 1600, 'warpdilation'}
+    {488, 6, inExpo, 200, 'warpspeed', 800, 'warpdilation'}
     {492, 2, inExpo, 50, 'stealth'}
     {494, 0.25, outExpo, 100, 'stealth'}
