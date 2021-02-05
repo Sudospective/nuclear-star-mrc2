@@ -61,6 +61,7 @@
 	aftsprite(AFT, AFTSprite)
 
 	-- Variables
+	rand.seed(404)
 	nukestar_basescore = {}
 	nukestar_adlibscore = {}
 	nukestar_adlibbeats = {
@@ -76,6 +77,23 @@
 		nukestar_basescore[pn] = 0
     	nukestar_adlibscore[pn] = 0
 	end
+
+	-- Aux and Node Setup
+	aux {'warpspeed', 'warprotation'}
+	node {'warpspeed', 'warprotation',
+		function(n, rot)
+			StarsLeft:texcoordvelocity(n * 0.01, -rot * 0.01)
+			StarsRight:texcoordvelocity(-n * 0.01, rot * 0.01)
+			StarsUp:texcoordvelocity(rot * 0.01, n * 0.01)
+			StarsDown:texcoordvelocity(-rot * 0.01, -n * 0.01)
+		end
+	}
+	aux {'warpdilation'}
+	node {'warpdilation',
+		function(n)
+			StarFrame:zoomz(n * 0.01)
+		end
+	}
 	
 	-- Default Mods
 	self:fov(105)
@@ -100,7 +118,6 @@
 			for _, curadlib in ipairs(nukestar_adlibbeats) do    
 				if (curadlib + 464) + 0.125 >= beat then
 					Trace(tostring(curadlib))
-					--local offset = beat - ( math.floor(GAMESTATE:GetSongBeat() * 8) / 8 )
 					local offset = beat - (curadlib + 464)
 					if offset < 0.125 and offset > -0.125 then
 						local flashcolor = 5
@@ -111,6 +128,9 @@
 						end
 						P[pn]:DidTapNote(col, flashcolor, false)
 						nukestar_adlibscore[pn] = nukestar_adlibscore[pn] + addscore
+						if GAMESTATE:GetSongBeat() > 465 and GAMESTATE:GetSongBeat() < 491.75 then
+							P[pn]:xy(rand.float(sw * 0.25, sw * 0.75), rand.float(sh * 0.25, sh * 0.75))
+						end
 					end
 				end
 			end

@@ -1,24 +1,7 @@
--- weeeeeee warp stuff
-aux {'warpspeed', 'warprotation'}
-node {'warpspeed', 'warprotation',
-    function(n, rot)
-        StarsLeft:texcoordvelocity(n * 0.01, -rot * 0.01)
-        StarsRight:texcoordvelocity(-n * 0.01, rot * 0.01)
-        StarsUp:texcoordvelocity(rot * 0.01, n * 0.01)
-        StarsDown:texcoordvelocity(-rot * 0.01, -n * 0.01)
-    end
-}
-aux {'warpdilation'}
-node {'warpdilation',
-    function(n)
-        StarFrame:zoomz(n * 0.01)
-    end
-}
-
 -- intro funnies
 set
-    {0, 1500, 'z', 800, 'zoomz', -20000, 'tinyz', 100, 'stealth', 100, 'dark', 0, 'xmod', 100, 'warpspeed', 10, 'warprotation'}
-    {16, -100, 'warpspeed', 1600, 'warpdilation'}
+    {0, 1500, 'z', 800, 'zoomz', -20000, 'tinyz', 100, 'stealth', 100, 'dark', 0, 'xmod', 100, 'warpspeed', 10, 'warprotation', 1600, 'warpdilation'}
+    {16, -100, 'warpspeed'}
 ease
     {0, 16, linear, 100, 'zoomz', 0, 'tinyz'}
     {0, 16, linear, 0, 'dark'}
@@ -26,6 +9,12 @@ ease
     {0, 16, inCubic, 1.5, 'xmod'}
     {0, 16, inExpo, 0, 'stealth'}
     {16, 2, outExpo, 10, 'warpspeed', 1, 'warprotation', 100, 'warpdilation'}
+    {32, 3, inSine, 50, 'stealth'}
+    {35, 1, outSine, 0, 'stealth'}
+    {64, 3, inSine, 50, 'stealth'}
+    {67, 1, outSine, 0, 'stealth'}
+    {96, 3, inSine, 50, 'stealth'}
+    {99, 1, outSine, 0, 'stealth'}
 
 func {0, function()
     AFTSprite:linear(0.1)
@@ -320,35 +309,45 @@ for beat = 432, 446, 4 do
         {beat + 3, 1, outExpo, 0, 'invert', 50, 'flip', 90, 'eccentricityx', 320, 'eccentricityz', 400, 'amt'}
 end
 
+-- Just use your imagination.
 func {460, function()
-    Trace( 'Ad-lib section beginning at beat', tostring(GAMESTATE:GetSongBeat() + 4) )
+    StarFrame:hidden(1)
     ImagineText:hidden(0)
     ImagineText:decelerate(spb)
     ImagineText:z(10)
     ImagineText:decelerate(spb)
     ImagineText:z(0)
-    ImagineText:sleep(2 * spb)
-    ImagineText:hidden(1)
 end, persist = false}
 func {464, function()
-    AFTSprite:zoom(1.1)
+    StarFrame:hidden(0)
+    ImagineText:hidden(1)
+    AFTSprite:zoom(1.01)
     AFTSprite:diffusealpha(0.9 * nukestar_aftMult)
     AFTSprite:decelerate(2 * spb)
     AFTSprite:zoom(1.005)
     AFTSprite:diffusealpha(0.85 * nukestar_aftMult)
 end, persist = false}
 func {492, function()
+    for pn = 1, 2 do
+        P[pn]:xy(scx, scy)
+    end
     AFTSprite:accelerate(2 * spb)
     AFTSprite:diffusealpha(0 * nukestar_aftMult)
 end, persist = false}
+func {494, function()
+    StarFrame:hidden(1)
+end, persist = false}
 
-set {460, 50, 'flip', 50, 'reverse', 100, 'disablemines'}
-set {465, 0, 'targetx1', 0, 'targetx4', 0, 'targety2', 0, 'targety3', 0, 'rotationz', 0, 'xmod'}
+set
+    {460, 50, 'flip', 50, 'reverse', 100, 'disablemines'}
+    {465, 0, 'targetx1', 0, 'targetx4', 0, 'targety2', 0, 'targety3', 0, 'rotationz', 0, 'xmod'}
 ease
     {458, 2, inExpo, 400, 'z', 1000, 'zoomz', 60, 'rotationx', 1000, 'parabolaz'}
-    {460, 3, outExpo, 0, 'z', 100, 'zoomz', 75, 'tiny', 50, 'reverse', -50, 'targetx1', 50, 'targetx4', 50, 'targety2', -50, 'targety3', 0, 'rotationx', 0, 'parabolaz', 360, 'rotationz'}
+    {460, 3, outExpo, 1, 'warpspeed', 1, 'warprotation', 50, 'warpdilation', 100, 'z', 100, 'zoomz', 75, 'tiny', 50, 'reverse', -50, 'targetx1', 50, 'targetx4', 50, 'targety2', -50, 'targety3', 0, 'rotationx', 0, 'parabolaz', 360, 'rotationz'}
     {464, 1, outQuart, 100, 'stealth', 100, 'dark'}
     {464, 1.5, tap, 50, 'z', 1000, 'zoomz'}
     {468, 26, linear, 800, 'zoomz', -20000, 'tinyz'}
-    {468, 26, inExpo, 1500, 'z', 50, 'stealth'}
+    {468, 26, inExpo, 1500, 'z', 100, 'stealth'}
+    {490, 4, inExpo, 100, 'warpspeed', 1600, 'warpdilation'}
+    {492, 2, inExpo, 50, 'stealth'}
     {494, 0.25, outExpo, 100, 'stealth'}
