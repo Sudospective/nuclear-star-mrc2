@@ -79,6 +79,7 @@
     	nukestar_adlibscore[pn] = 0
 		nukestar_possiblescore[pn] = 0
 	end
+	-- the most elusive mod i have created: fake itg
 	function nukestar_adlib(pn, col, beat)
 		local PStats = STATSMAN:GetCurStageStats():GetPlayerStageStats(pn - 1)
 		P[pn]:FakeStep(col)
