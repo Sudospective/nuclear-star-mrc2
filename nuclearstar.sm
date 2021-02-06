@@ -6,25 +6,44 @@
 #ARTISTTRANSLIT:;
 #GENRE:;
 #CREDIT:;
-#MUSIC:nuclearstar.ogg;
 #BANNER:nuclearstar-bn.png;
 #BACKGROUND:;
+#LYRICSPATH:;
 #CDTITLE:;
-#SAMPLESTART:120.580;
+#MUSIC:nuclearstar.ogg;
+#OFFSET:0.023;
+#SAMPLESTART:120.560;
 #SAMPLELENGTH:9.648;
 #SELECTABLE:YES;
-#OFFSET:0.023;
 #BPMS:0.000=199.000;
 #STOPS:;
 #BGCHANGES:;
-#FGCHANGES:0.000=template/main.xml=1.000=0=0=1;
-//--------------- dance-single - mrcool909090 + Sudospective ----------------
+
+//The majority of simfile scripts and visual effects are stored here.
+#FGCHANGES:0.000=template/main.xml=1.000=0=0=1=====,
+;
+
+#SPELLCARDS:0.000=111.750=can this PLEASE be a normal field trip=2=0.200^0.400^0.900^1.000
+112.000=136.000=with the FRIZZ???=5=0.600^0.200^0.700^1.000
+144.000=191.750=no way=8=1.000^0.000^0.500^1.000
+192.000=207.750=sudo finally did a driven drop=9=0.500^1.000^0.500^1.000
+208.000=255.750=i ate some wubby bagels and now im wubby=11=1.000^1.000^1.000^1.000
+256.000=268.000=ease {256, 12, inQuad, 100, 'blackhole'}=8=0.300^0.300^0.300^1.000
+272.000=335.750=dont forget to thank the bus driver=6=1.000^1.000^1.000^1.000
+400.000=431.750=D E A T J=11=1.000^1.000^1.000^1.000
+432.000=459.750=it may be a halo but this is definitely not holy=12=0.700^0.200^0.200^1.000
+460.000=493.750=but where do i step=2=0.000^1.000^0.200^1.000
+;
+
+#KEYSOUNDS:;
+
+//---------------dance-single - mrcool909090 + Sudospective----------------
 #NOTES:
      dance-single:
      mrcool909090 + Sudospective:
      Challenge:
      12:
-     0.562,0.705,0.013,0.336,0.128:
+     0.562,0.719,0.013,0.336,0.128:
 0000
 0000
 0000
@@ -1220,4 +1239,20 @@
 0000
 0M00
 0000
+,
+0000
+0000
+0000
+0000
+,
+0000
+0000
+0000
+0000
+,
+00M0
+0000
+0000
+0000
 ;
+

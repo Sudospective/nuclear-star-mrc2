@@ -162,6 +162,7 @@ swap
     {198, 0.5, outExpo, 'urld'}
     {199, 0.5, outExpo, 'ldur'}
 ease
+    {200, 6, outQuad, 100, 'warpspeed', 200, 'warpdilation'}
     {200, 1, outExpo, 0, 'movey', 0, 'centered2'}
     {200, 1, outExpo, 10, 'rotationz', -360, 'rotationy', 314.15 * 2, 'confusionyoffset'}
     {200.75, 1, outExpo, 100, 'reverse'}
@@ -175,7 +176,7 @@ ease
     {206, 1, outExpo, 0, 'rotationz', 0, 'reverse'}
 
 
--- i ate some wubby bagels and now im wubby
+-- WUBWUBWUBWUB
 swap
     {206.5, 0.5, outExpo, 'dlru'}
     {207, 0.5, outExpo, 'urld'}
@@ -239,14 +240,25 @@ ease
     {252.5, 0.5, outExpo, 0, 'invert', 100, 'flip', 10, 'rotationy'}
     {253, 0.5, outExpo, 0, 'reverse'}
     {253.5, 0.5, outExpo, 0, 'flip', 0, 'rotationy', 100, 'zoomz'}
-
 for beat = 240, 255, 2 do
     add
         {beat, 0.5, pop, -100, 'holdgirth', -100, 'drunk', 100, 'tipsy'}
         {beat + 1, 0.5, pop, -100, 'holdgirth', 100, 'drunk', -100, 'tipsy'}
 end
 
--- actually tornado
+-- This part's for the starfield
+ease
+    {206, 2, outExpo, -10, 'warpspeed', 100, 'warpdilation'}
+    {207, 2, inOutExpo, 200, 'warpspeed', -50, 'warprotation'}
+    {208, 2, inExpo, 20, 'warpspeed', -10, 'warprotation'}
+    {208, 8, spike, -100, 'warpspeed', 400, 'warpdilation'}
+    {222, 2, pop, 50, 'warpspeed'}
+    {224, 2, bounce, 200, 'warpspeed', 50, 'warpdilation'}
+    {224, 8, spike, -100, 'warpspeed', 400, 'warpdilation'}
+    {238, 2, pop, 5, 'warpspeed', 10, 'warpdilation'}
+    {239, 1, inExpo, 100, 'warpspeed', 100, 'warprotation'}
+
+-- Actually Tornado
 for beat = 256, 266, 2 do
     add
         {beat, 0.5, pop, -100, 'holdgirth', 100, 'noteskewx', -100, 'noteskewy', 15, 'zoom', -100, 'drunk', 100, 'tipsy'}
@@ -271,7 +283,7 @@ func {272, function()
 end, persist = false}
 
 ease
-    {271, 2, inOutExpo, 5, 'warpspeed', -5, 'warprotation', 15, 'warpdilation', 0.45, 'xmod', 100, 'drunk', 25, 'drunkperiod', 100, 'drunkz', 25, 'tipsyperiod', -100, 'attenuatex', -100, 'attenuatez', 100, 'tornado', 400, 'tornadoperiod', 100, 'tornadoz', 800, 'tornadozperiod', 100, 'dark', -75, 'flip', -25, 'targetx1', 25, 'targetx4', 25, 'targetz2', -25, 'targetz3', 200, 'wave', -70, 'reverse', 100, 'dark', 1300, 'z', 314.15 * 2, 'confusionzoffset', 800, 'zoomz', -90, 'rotationx', 314.15 / 2, 'confusionxoffset'}
+    {271, 2, inOutExpo, 1, 'warpspeed', -2, 'warprotation', 25, 'warpdilation', 0.45, 'xmod', 100, 'drunk', 25, 'drunkperiod', 100, 'drunkz', 25, 'tipsyperiod', -100, 'attenuatex', -100, 'attenuatez', 100, 'tornado', 400, 'tornadoperiod', 100, 'tornadoz', 800, 'tornadozperiod', 100, 'dark', -75, 'flip', -25, 'targetx1', 25, 'targetx4', 25, 'targetz2', -25, 'targetz3', 200, 'wave', -70, 'reverse', 100, 'dark', 1300, 'z', 314.15 * 2, 'confusionzoffset', 800, 'zoomz', -90, 'rotationx', 314.15 / 2, 'confusionxoffset'}
     {270, 4, spike, 100, 'warpspeed'}
     {332, 4, inOutQuad, 25, 'warpspeed', -10, 'warprotation', 1.5, 'xmod', 0, 'drunk', 0, 'drunkperiod', 0, 'drunkz', 0, 'tipsyperiod', 0, 'attenuatex', 0, 'attenuatez', 0, 'tornado', 0, 'tornadoperiod', 0, 'tornadoz', 0, 'tornadozperiod', 0, 'dark', 0, 'flip', 0, 'targetx1', 0, 'targetx4', 0, 'targetz2', 0, 'targetz3', 0, 'wave', 0, 'reverse', 0, 'z', 0, 'confusionzoffset', 100, 'zoomz', 0, 'rotationx', 0, 'confusionxoffset'}
     {328, 16, inOutQuad, 100, 'warpdilation'}
@@ -291,12 +303,13 @@ ease
     {392, 7, inOutQuad, 0.5, 'xmod', 0, 'dark', 0, 'confusionzoffset', 0, 'rotationx', 0, 'confusionxoffset', 100, 'zoomy', 0, 'tinyz', 0, 'stealth', 0, 'confusionzoffset'}
     {398, 2, inExpo, 1.5, 'xmod'}
     {398.5, 1, outBack, 0, 'invert'}
+    {448, 12, inSine, 200, 'warpspeed', 400, 'warprotation', 400, 'warpdilation'}
 mirror
     {398, 2, inExpo, 200, 'beat'}
     {446, 2, inExpo, 0, 'beat'}
 add
     {456, 8, inQuad, 90, 'offset'}
-for beat = 432, 446, 4 do
+for beat = 432, 444, 4 do
     mirroradd
         {beat, 1, outExpo, -200, 'movex'}
         {beat + 1, 1, outExpo, 200, 'movex'}
@@ -307,6 +320,10 @@ for beat = 432, 446, 4 do
         {beat + 1, 1, outExpo, 0, 'invert', 50, 'flip', 90, 'eccentricityx', 320, 'eccentricityz', 400, 'amt'}
         {beat + 2, 1, outExpo, 225, 'invert', -75, 'flip', 0, 'eccentricityx', 0, 'eccentricityz', 200, 'amt'}
         {beat + 3, 1, outExpo, 0, 'invert', 50, 'flip', 90, 'eccentricityx', 320, 'eccentricityz', 400, 'amt'}
+end
+
+for beat = 432, 447 do
+    ease {beat, 1, pop, -200, 'warprotation'}
 end
 
 -- Just use your imagination.
