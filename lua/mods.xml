@@ -157,7 +157,6 @@
 			else
 				ImagineScore2:settext( '+'..tostring( math.floor( (nukestar_adlibscore[pn] / nukestar_basescore[pn]) * 10000 ) / 100 ) )
 			end
-			stats:SetScore(nukestar_basescore[pn] + nukestar_adlibscore[pn])
 			stats:SetActualDancePoints(nukestar_basescore[pn] + nukestar_adlibscore[pn])
 			Trace( 'Final Grade: '..tostring(math.floor(stats:GetPercentDancePoints() * 10000) / 100))
 		end
