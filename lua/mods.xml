@@ -85,16 +85,21 @@
 		if GAMESTATE:GetSongBeat() >= 463.75 then
 			for _, curadlib in ipairs(nukestar_adlibbeats) do    
 				if (curadlib + 464) + 0.125 >= beat then
-					Trace(tostring(curadlib))
 					local offset = beat - (curadlib + 464)
 					if offset < 0.125 and offset > -0.125 then
 						local flashcolor = 5
 						local addscore = 1
-						if offset < 0.075 and offset > -0.075 then
+						local early = false
+						if offset < 0.1 and offset > -0.1 then
 							flashcolor = 1
 							addscore = 2.5
 						end
+						if offset < 0 then
+							early = true
+						end
 						P[pn]:DidTapNote(col, flashcolor, false)
+						P[pn]:SendJudgment(flashcolor, early)
+						P[pn]:SetCombo(P[pn]:GetCombo() + 1)
 						nukestar_adlibscore[pn] = nukestar_adlibscore[pn] + addscore
 						if GAMESTATE:GetSongBeat() > 465 and GAMESTATE:GetSongBeat() < 491.75 then
 							P[pn]:xy(rand.float(sw * 0.25, sw * 0.75), rand.float(sh * 0.25, sh * 0.75))
@@ -147,18 +152,12 @@
 			local stats = STATSMAN:GetCurStageStats():GetPlayerStageStats(pn - 1)
 			nukestar_possiblescore[pn] = stats:GetPossibleDancePoints()
 			nukestar_basescore[pn] = stats:GetActualDancePoints()
-			Trace( 'Player '..tostring(pn))
-			Trace( '----------------------------')
-			Trace( 'Base DP: '..tostring(nukestar_basescore[pn]) )
-			Trace( 'Ad-lib DP: '..tostring(nukestar_adlibscore[pn]))
-			Trace( 'Total DP: '..tostring(nukestar_basescore[pn] + nukestar_adlibscore[pn]))
 			if pn == 1 then
-				ImagineScore1:settext( '+'..tostring( math.floor( (nukestar_adlibscore[pn] / nukestar_basescore[pn]) * 10000 ) / 100 ) )
+				ImagineScore1:settext( '+'..(string.format('%.2f', (nukestar_adlibscore[pn] / nukestar_possiblescore[pn]) * 100))..'%' )
 			else
-				ImagineScore2:settext( '+'..tostring( math.floor( (nukestar_adlibscore[pn] / nukestar_basescore[pn]) * 10000 ) / 100 ) )
+				ImagineScore2:settext( '+'..(string.format('%.2f', (nukestar_adlibscore[pn] / nukestar_possiblescore[pn]) * 100))..'%' )
 			end
 			stats:SetActualDancePoints(nukestar_basescore[pn] + nukestar_adlibscore[pn])
-			Trace( 'Final Grade: '..tostring(math.floor(stats:GetPercentDancePoints() * 10000) / 100))
 		end
 	end}
 

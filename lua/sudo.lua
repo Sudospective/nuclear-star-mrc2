@@ -335,6 +335,10 @@ func {492, function()
     AFTSprite:diffusealpha(0 * nukestar_aftMult)
 end, persist = false}
 func {494, function()
+    for pn = 1, 2 do
+        PJ[pn]:hidden(1)
+        PC[pn]:hidden(1)
+    end
     StarFrame:hidden(1)
     ImagineScore1:hidden(0)
     ImagineScore1:sleep(4 * spb)
